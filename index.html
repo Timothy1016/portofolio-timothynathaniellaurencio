@@ -22,8 +22,8 @@ body::before {
     background-image: url('bg-photo.jpeg');
     background-size: cover;
     background-position: center;
-    filter: blur(15px);
-    -webkit-filter: blur(15px);
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
     position: absolute;
     top: 0;
     left: 0;
@@ -34,14 +34,44 @@ body::before {
 }        .container { max-width: 900px; margin: auto; padding: 2rem; }
         
         /* Header */
-        header { display: flex; justify-content: space-between; padding: 1rem 0; }
-        nav a { color: var(--text); text-decoration: none; margin-left: 1rem; }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
 
-        /* Hero */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+
+.logo strong { font-size: 1.5rem; color: #333; }
+.logo span { font-style: italic; color: #666; margin-left: 10px; }
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 25px;
+    font-weight: 500;
+}
+
+    nav a {
+    color: #000000; /* Warna hitam agar jelas di atas background putih */
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: bold;
+    }        /* Hero */
         .hero { text-align: center; padding: 4rem 0; }
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover; /* Agar foto tidak gepeng */
     display: block;
@@ -63,16 +93,25 @@ body::before {
 
     <div class="container">
         <header>
-            <strong>Timothy Nathaniel Laurencio</strong>
-            <nav>
-                <a href="#tech">Stack</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </nav>
+    <div class="logo">
+        <strong>Timothy Nathaniel Laurencio</strong> 
+    </div>
+    <header>
+    <strong>Timothy Nathaniel Laurencio</strong>
+    <nav>
+        <a href="#tech">Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+</header>
+
         </header>
 
         <section class="hero">
-       <img src="Profile Github.png" alt="Timothy Nathaniel Laurencio" class="profile-img">
+<a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank">
+    <img src="Profile Github.png" alt="Timothy Nathaniel Laurencio" class="profile-img">
+</a>
             <h1>Hi, I'm Timothy Nathaniel Laurencio</h1>
             <p>Software Engineer | Robotics Enthusiast | Open Source Contributor</p>
         </section>
@@ -98,18 +137,19 @@ body::before {
 
         <section id="contact" class="contact">
             <h2>Let's Connect</h2>
-            <p><a href="mailto:email@anda.com" style="color: var(--accent);">Email Me</a> | <a href="#" style="color: var(--accent);">LinkedIn</a></p>
-        </section>
-    </div>
+            <a href="mailto:timothy.nathaniel@email.com" style="color: var(--accent);">Email Me | </a>
+
+<a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank" style="color: var(--accent);">LinkedIn</a>    </div>
 
     <script>
-        // Contoh JS sederhana: Smooth scrolling
-        document.querySelectorAll('a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
+    });
+});
     </script>
 </body>
 </html>
