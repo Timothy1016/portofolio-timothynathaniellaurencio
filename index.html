@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Software Engineer</title>
+    <style>
+        /* CSS Dasar & Tema Gelap */
+        :root { --bg: #0f172a; --text: #f8fafc; --accent: #38bdf8; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        .container { max-width: 900px; margin: auto; padding: 2rem; }
+        
+        /* Header */
+        header { display: flex; justify-content: space-between; padding: 1rem 0; }
+        nav a { color: var(--text); text-decoration: none; margin-left: 1rem; }
+
+        /* Hero */
+        .hero { text-align: center; padding: 4rem 0; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; background: #334155; margin-bottom: 1rem; }
+
+        /* Grid Tech Stack */
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; margin-top: 2rem; }
+        .tech-item { background: #1e293b; padding: 1rem; text-align: center; border-radius: 8px; }
+
+        /* Projects */
+        .project-card { background: #1e293b; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; }
+        
+        /* Footer/Contact */
+        .contact { text-align: center; padding: 4rem 0; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <strong>Nama Anda</strong>
+            <nav>
+                <a href="#tech">Stack</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="profile-img"></div>
+            <h1>Nama Anda</h1>
+            <p>Software Engineer & Autonomous Systems Enthusiast</p>
+        </section>
+
+        <section id="tech">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">Python</div>
+                <div class="tech-item">C++</div>
+                <div class="tech-item">ROS 2</div>
+                <div class="tech-item">Docker</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>Nama Proyek</h3>
+                <p>Deskripsi singkat tentang proyek sistem otonom atau software yang dibangun.</p>
+                <a href="#" style="color: var(--accent);">GitHub Link</a>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Let's Connect</h2>
+            <p><a href="mailto:email@anda.com" style="color: var(--accent);">Email Me</a> | <a href="#" style="color: var(--accent);">LinkedIn</a></p>
+        </section>
+    </div>
+
+    <script>
+        // Contoh JS sederhana: Smooth scrolling
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
