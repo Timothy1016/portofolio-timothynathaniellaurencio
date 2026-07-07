@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.js"></script>
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Software Engineer</title>
-    <style>
-        /* CSS Dasar & Tema Gelap */
-        :root { --bg: #0f172a; --text: #f8fafc; --accent: #38bdf8; }
+  <style>
+    /* CSS Dasar & Tema Gelap */
+    :root { --bg: #0f172a; --text: #f8fafc; --accent: #38bdf8; }
+
+    /* Paste di sini */
+    * {
+        box-sizing: border-box;
+    }
+        
+.slider-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Menampilkan 5 foto per baris */
+    gap: 15px;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -31,20 +55,97 @@ body::before {
     height: 100%;
     z-index: -1;
     opacity: 0.6;
-}        .container { max-width: 900px; margin: auto; padding: 2rem; }
-        
+}        .container { 
+    max-width: 100%; /* Menghapus batasan 900px */
+    padding-left: 5%; /* Memberikan jarak agar tidak terlalu menempel ke pinggir */
+    padding-right: 5%;
+}
         /* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    background-color: #ffffff;
+    padding: 1rem 2% 1rem 0; /* Angka 0 di paling kanan artinya tidak ada jarak di sisi kiri */    background-color: #ffffff;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    width: 100%;
+    width: 100%; /* Pastikan width 100% */
 }
+photo-slider
+
+.education-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 750px;
+    margin: 20px auto;
+    text-align: left;
+    padding: 20px;
+}
+
+.education-card {
+    display: flex;
+    background: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+.education-card:last-child { border-bottom: none; }
+
+.edu-logo {
+    font-size: 2rem;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.edu-details h3 { font-size: 1.1rem; margin: 0; color: #333; }
+.edu-degree { font-size: 0.95rem; color: #444; margin: 2px 0; }
+.edu-date { font-size: 0.85rem; color: #757575; margin: 0 0 5px 0; }
+.edu-desc { font-size: 0.9rem; color: #555; margin: 0; }
+
+/* ... kode CSS kamu yang lainnya ... */
+
+    /* Bagian About Me - Pastikan semua sudah tertutup kurung kurawal */
+    #about { padding: 4rem 5%; text-align: center; }
+
+    /* Container utama slider */
+#about { 
+    padding: 4rem 5%; 
+    text-align: center; 
+}
+
+/* Mengatur agar slider bisa digeser (slide) */
+.photo-slider {
+    display: flex;
+    overflow-x: auto; /* Kunci agar bisa di-scroll ke samping */
+    gap: 20px;
+    padding: 20px 5%;
+    scroll-snap-type: x mandatory; /* Membuat geseran berhenti pas di tiap foto */
+    -webkit-overflow-scrolling: touch; /* Agar smooth di HP */
+}
+
+.slider-wrapper {
+    display: flex; /* Memastikan semua foto berjajar ke samping */
+    flex-shrink: 0;
+}
+
+.slider-wrapper img {
+    width: 250px; /* Ukuran bisa sedikit diperkecil jika foto terlalu banyak */
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+    scroll-snap-align: start; /* Memastikan foto berhenti dengan rapi */
+}
+
+
+    /* Media Query Harus Paling Bawah */
+    @media (max-width: 768px) {
+        header { flex-direction: column; padding: 1rem; }
+        nav { margin-top: 10px; gap: 15px; }
+    }
+
 
 nav {
     display: flex;
@@ -53,21 +154,22 @@ nav {
 
 
 .logo strong { font-size: 1.5rem; color: #333; }
+.logo {
+    white-space: nowrap;
+    padding-left: 20px; /* Sesuaikan angka ini, misalnya 20px atau 30px */
+}
+
 .logo span { font-style: italic; color: #666; margin-left: 10px; }
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #000000; /* Warna hitam */
+    font-weight: bold;
     margin-left: 25px;
-    font-weight: 500;
+    white-space: nowrap; /* Ini yang membuat "About Me" sejajar */
+    display: inline-block;
 }
 
-    nav a {
-    color: #000000; /* Warna hitam agar jelas di atas background putih */
-    text-decoration: none;
-    margin-left: 1.5rem;
-    font-weight: bold;
-    }        /* Hero */
         .hero { text-align: center; padding: 4rem 0; }
 .profile-img {
     width: 250px;
@@ -86,35 +188,342 @@ nav a {
         .project-card { background: #1e293b; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; }
         
         /* Footer/Contact */
-        .contact { text-align: center; padding: 4rem 0; }
-    </style>
+        /* ... kode CSS lainnya ... */
+    .contact { text-align: center; padding: 4rem 0; }
+
+    /* Paste di sini */
+    #journey { padding: 4rem 5%; background-color: #ffffff; }
+    .timeline { max-width: 800px; margin: 0 auto; border-left: 3px solid #38bdf8; padding-left: 20px; }
+    .timeline-item { margin-bottom: 2rem; position: relative; }
+    .timeline-item h3 { margin: 0; color: #333; }
+    .timeline-item p { margin: 5px 0; color: #666; }
+
+/* ... kode sebelumnya ... */
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column; 
+            padding: 1rem;
+        }
+        nav {
+            margin-top: 10px;
+            gap: 15px;
+        }
+    } /* Tanda tutup ini wajib untuk media query */
+
+
+    /* --- SECTION & CONTAINER MANAGEMENT --- */
+.about-section {
+    padding: 6rem 5%;
+    background-color: transparent; /* Mempertahankan background buram utamamu */
+    display: flex;
+    justify-content: center;
+}
+
+.about-card-container {
+    background: #ffffff;
+    max-width: 950px;
+    width: 100%;
+    padding: 45px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* --- INTERFACES: 2 COLUMN GRID --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr; /* Membagi kolom foto dan kolom teks */
+    gap: 45px;
+    align-items: center;
+}
+
+/* Kolom Kiri: Styling Bingkai Foto */
+.profile-image-box {
+    width: 100%;
+    height: 420px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.featured-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- TYPOGRAPHY HIERARCHY --- */
+.about-text-side {
+    text-align: left;
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0073b1; /* Warna aksen ala LinkedIn */
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.about-text-side h2 {
+    font-size: 2.2rem;
+    color: #222222;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.about-subtitle {
+    font-size: 1rem;
+    color: #666666;
+    margin: 0 0 30px 0;
+    font-weight: 500;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+/* --- VISUAL BULLET POINTS --- */
+.visual-points {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.point-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.point-icon {
+    font-size: 1.5rem;
+    background: #f4f6f8;
+    padding: 10px;
+    border-radius: 12px;
+    line-height: 1;
+}
+
+.point-content h3 {
+    font-size: 1.1rem;
+    color: #333333;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.point-content p {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- SPACING & REPOSITIONED GALLERY --- */
+.section-divider {
+    height: 1px;
+    background: #eef0f2;
+    margin: 40px 0; /* Memberikan jarak pemisah yang tegas */
+}
+
+.about-gallery-section {
+    text-align: left;
+}
+
+.gallery-title {
+    font-size: 1.2rem;
+    color: #333333;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+/* Slider Customization */
+.photo-slider {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    gap: 15px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+}
+
+.slider-wrapper {
+    display: flex;
+    gap: 15px;
+}
+
+.slider-wrapper img {
+    flex: 0 0 auto;
+    width: 200px; /* Ukuran disesuaikan agar proporsional di dalam kartu */
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    scroll-snap-align: start;
+}
+
+.photo-slider::-webkit-scrollbar { height: 5px; }
+.photo-slider::-webkit-scrollbar-thumb { background: #e4e6eb; border-radius: 10px; }
+
+/* RESPONSIVE LAYOUT (UNTUK LAYAR HP) */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* Menjadi 1 kolom bertumpuk di HP */
+        gap: 30px;
+    }
+    .profile-image-box {
+        height: 300px;
+    }
+    .about-card-container {
+        padding: 25px;
+    }
+}
+
+</style>
 </head>
 <body>
-
     <div class="container">
+        <!-- HEADER & NAVIGASI YANG SUDAH DIPERBAIKI -->
         <header>
-    <div class="logo">
-        <strong>Timothy Nathaniel Laurencio</strong> 
-    </div>
-    <header>
-    <strong>Timothy Nathaniel Laurencio</strong>
-    <nav>
-        <a href="#tech">Stack</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
-</header>
-
+            <div class="logo">
+                <strong>Timothy Nathaniel Laurencio</strong>
+            </div>
+            <nav>
+                <a href="#journey">Journey</a>
+                <a href="#about">About Me</a>
+                <a href="#tech">Stack</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </header>
 
+        <!-- HERO SECTION YANG BERSIH -->
         <section class="hero">
-<a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank">
-    <img src="Profile Github.png" alt="Timothy Nathaniel Laurencio" class="profile-img">
-</a>
+            <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727085413" target="_blank">
+                <img src="Profile Github.png" alt="Timothy Nathaniel Laurencio" class="profile-img">
+            </a>
             <h1>Hi, I'm Timothy Nathaniel Laurencio</h1>
             <p>Software Engineer | Robotics Enthusiast | Open Source Contributor</p>
+        </section> <!-- Penutup Hero Section -->
+
+        <!-- SEKSI ABOUT ME BARU (2 KOLOM + POIN VISUAL) -->
+        <section id="about" class="about-section">
+            <div class="about-card-container">
+                
+                <!-- LAYOUT 2 KOLOM (FOTO + TEKS) -->
+                <div class="about-grid">
+                    
+                    <!-- KOLOM KIRI: FOTO UTAMA -->
+                    <div class="about-image-side">
+                        <div class="profile-image-box">
+                            <img src="foto1.png" alt="Timothy Nathaniel Laurencio" class="featured-profile-img">
+                        </div>
+                    </div>
+                    
+                    <!-- KOLOM KANAN: TEKS DENGAN HIRARKI & POIN VISUAL -->
+                    <div class="about-text-side">
+                        <span class="section-tag">GET TO KNOW ME</span>
+                        <h2>About Me</h2>
+                        <p class="about-subtitle">Software Engineer | Robotics Enthusiast | Open Source Contributor</p>
+                        
+                        <div class="visual-points">
+                            <!-- Poin 1: Pendidikan -->
+                            <div class="point-item">
+                                <div class="point-icon">🎓</div>
+                                <div class="point-content">
+                                    <h3>Academic Background</h3>
+                                    <p>Recent graduate with a Bachelor of Engineering in Computer Science from Nanjing Tech University, China.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Poin 2: Keahlian & Passion -->
+                            <div class="point-item">
+                                <div class="point-icon">💻</div>
+                                <div class="point-content">
+                                    <h3>Tech & Innovation</h3>
+                                    <p>Driven by a strong curiosity for learning new technologies. Passionate about building and continuously improving software engineering projects entirely from scratch.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Poin 3: Gaya Hidup & Hobbies -->
+                            <div class="point-item">
+                                <div class="point-icon">⚡</div>
+                                <div class="point-content">
+                                    <h3>Lifestyle & Interests</h3>
+                                    <p>Staying active through gym training, basketball, and badminton. In my leisure time, I enjoy playing the guitar at an intermediate level.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> <!-- Akhir 2 Kolom -->
+
+                <div class="section-divider"></div>
+                
+                <!-- SLIDER FOTO DI BAGIAN BAWAH -->
+                <div class="about-gallery-section">
+                    <h4 class="gallery-title">Captured Moments</h4>
+                    <div class="photo-slider">
+                        <div class="slider-wrapper">
+                            <img src="foto1.png" alt="Foto 1" loading="lazy">
+                            <img src="foto2.png" alt="Foto 2" loading="lazy">
+                            <img src="foto3.png" alt="Foto 3" loading="lazy">
+                            <img src="foto4.png" alt="Foto 4" loading="lazy">
+                            <img src="foto5.png" alt="Foto 5" loading="lazy">
+                            <img src="foto6.png" alt="Foto 6" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
+
+    <!-- Lalu diikuti Journey Section -->
+    <section id="journey">photo-slider
+        <h2>My Journey</h2>
+        <!-- ... -->
+    </section>
+    
+
+<section id="journey">
+    <h2>Education</h2>
+    <div class="education-container">
+        <div class="education-card">
+            <div class="edu-logo">🎓</div>
+            <div class="edu-details">
+                <h3>Nanjing Tech University</h3>
+                <p class="edu-degree">Bachelor of Engineering in Computer Science and Technology</p>
+                <p class="edu-date">2022 — 2026</p>
+                <p class="edu-desc">Fokus pada sistem otonom, robotika, dan pengembangan perangkat lunak.</p>
+            </div>
+        </div>
+        <div class="education-card">
+            <div class="edu-logo">🏫</div>
+            <div class="edu-details">
+                <h3>Nama SMA Kamu</h3>
+                <p class="edu-degree">Science Stream (IPA)</p>
+                <p class="edu-date">2019 — 2022</p>
+                <p class="edu-desc">Aktif dalam organisasi dan kompetisi teknologi.</p>
+            </div>
+        </div>
+        <div class="education-card">
+            <div class="edu-logo">🏫</div>
+            <div class="edu-details">
+                <h3>Nama SMP Kamu</h3>
+                <p class="edu-degree">Junior High School</p>
+                <p class="edu-date">2016 — 2019</p>
+                <p class="edu-desc">Membangun dasar logika pemrograman.</p>
+            </div>
+        </div>
+        <div class="education-card">
+            <div class="edu-logo">🏫</div>
+            <div class="edu-details">
+                <h3>Nama SD Kamu</h3>
+                <p class="edu-degree">Elementary School</p>
+                <p class="edu-date">2010 — 2016</p>
+                <p class="edu-desc">Membangun minat dasar di bidang sains.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
         <section id="tech">
             <h2>Tech Stack</h2>
