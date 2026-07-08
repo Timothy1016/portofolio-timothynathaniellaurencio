@@ -39,6 +39,45 @@
     padding: 0;
 }
 
+/* Styling untuk Nama yang Elit */
+/* Styling untuk Nama yang Elit */
+.name-highlight {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    display: inline-block;
+    
+    /* Gunakan background-clip untuk teks gradien yang bersih */
+    background: linear-gradient(90deg, #1e3a8a, #0d9488);
+    -webkit-background-clip: text;
+    background-clip: text; /* Versi standar agar lebih aman */
+    
+    /* Mengatur warna teks menjadi transparan agar background gradien muncul */
+    color: transparent; 
+    
+    /* Transisi halus */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Hapus text-shadow dari state normal jika tidak diperlukan */
+.name-highlight:hover {
+    transform: scale(1.02);
+    /* Ganti text-shadow dengan filter drop-shadow agar lebih rapi untuk teks transparan */
+    filter: drop-shadow(0 4px 6px rgba(13, 148, 136, 0.2));
+}
+
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.name-animate {
+    animation: fadeIn 1s ease-out;
+}
+
 
     /* CSS Dasar & Tema Gelap */
 
@@ -493,6 +532,7 @@ nav a {
     }
 }
 
+
 /* --- TIMELINE EDUCATION SECTION (FIXED & CLEAN) --- */
 .journey-section {
     background: transparent !important; /* Memaksa latar belakang luar jadi transparan agar gambar blur kelihatan */
@@ -778,7 +818,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- HEADER & NAVIGASI YANG SUDAH DIPERBAIKI -->
         <header>
             <div class="logo">
-                <strong>Timothy Nathaniel Laurencio</strong>
+            <strong class="name-highlight name-animate">Timothy Nathaniel Laurencio</strong>
             </div>
             <nav>
                 <a href="#journey">Journey</a>
@@ -1002,11 +1042,11 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <div class="contact-buttons-wrapper" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
             
-            <a href="mailto:emailkamu@gmail.com" target="_blank" class="btn-email-interactive" style="background-color: #0073b1; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0, 115, 177, 0.25);">
+            <a href="mailto:timothynathaniellaurencio@gmail.com" target="_blank" class="btn-email-interactive" style="background-color: #0073b1; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0, 115, 177, 0.25);">
                 <i class="fas fa-envelope"></i> Email Me
             </a>
             
-            <a href="https://linkedin.com/in/username-kamu" target="_blank" class="btn-linkedin-interactive" style="background-color: white; color: #0073b1; border: 2px solid #0073b1; padding: 10px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+            <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank" class="btn-linkedin-interactive" style="background-color: white; color: #0073b1; border: 2px solid #0073b1; padding: 10px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
                 <i class="fab fa-linkedin"></i> LinkedIn
             </a>
             
