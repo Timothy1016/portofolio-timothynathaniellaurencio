@@ -17,6 +17,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Software Engineer</title>
   <style>
+
+    body {
+    /* Menggunakan file background asli kamu */
+    background-image: url('bg-photo.jpeg'); 
+    
+    /* Mengunci background agar tidak ikut bergeser saat di-scroll (Parallax/Fixed Effect) */
+    background-attachment: fixed; 
+    
+    /* Memposisikan foto tepat di tengah-tengah layar */
+    background-position: center center; 
+    
+    /* Tidak mengulang gambar jika layar terlalu besar */
+    background-repeat: no-repeat; 
+    
+    /* Menyesuaikan ukuran agar pas dengan lebar/tinggi layar browser secara proporsional */
+    background-size: cover; 
+    
+    /* Mengatur margin default browser menjadi nol */
+    margin: 0;
+    padding: 0;
+}
+
+
     /* CSS Dasar & Tema Gelap */
 
     @media (max-width: 576px) {
@@ -579,7 +602,174 @@ nav a {
     .education-card { gap: 15px; }
 }
 
-</style>
+/* Efek Kursor Berkedip */
+.cursor {
+    font-weight: bold;
+    color: #0073b1; /* Menggunakan warna aksen biru profesional website kamu */
+    animation: blink 0.7s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+/* ==================== STYLE UNTUK TECH STACK ==================== */
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.tech-badge {
+    background-color: #f1f5f9; /* Warna latar belakang pill badge (abu-abu terang) */
+    color: #0f172a;            /* Warna teks (hitam/abu-abu gelap) KUNCI AGAR KELIHATAN! */
+    padding: 8px 16px;
+    border-radius: 50px;       /* Membuat sudutnya membulat rapi */
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* Efek keren saat kursor didekatkan ke badge */
+.tech-badge:hover {
+    background-color: #0073b1; /* Berubah jadi warna aksen biru kamu */
+    color: #ffffff;            /* Teksnya berubah jadi putih saat di-hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 115, 177, 0.2);
+}
+/* ==================== SCROLL ANIMATION STYLES ==================== */
+/* Kondisi awal sebelum elemen terlihat di layar */
+.scroll-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Kondisi setelah elemen masuk ke layar (ditrigger oleh JavaScript) */
+.scroll-fade-up.is-visible {
+    opacity: 1;
+}
+/* ================= EFEK INTERAKTIF LET'S CONNECT ================= */
+.contact-card-interactive {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+/* Kotak melayang tipis saat didekati */
+.contact-card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0, 115, 177, 0.08) !important;
+}
+
+/* Tombol Email (Solid) */
+.btn-email-interactive {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+.btn-email-interactive:hover {
+    transform: translateY(-3px);
+    background-color: #005a8b !important; /* Biru agak gelap saat di-hover */
+    box-shadow: 0 8px 20px rgba(0, 115, 177, 0.35) !important;
+}
+.btn-email-interactive:active {
+    transform: translateY(-1px) scale(0.97); /* Efek membal seperti tombol fisik */
+}
+
+/* Tombol LinkedIn (Outline) */
+.btn-linkedin-interactive {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+.btn-linkedin-interactive:hover {
+    transform: translateY(-3px);
+    background-color: #0073b1 !important; /* Berubah jadi solid biru */
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(0, 115, 177, 0.2) !important;
+}
+.btn-linkedin-interactive:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+/* Animasi melambaikan tangan otomatis setiap beberapa detik */
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+    10% { transform: rotate(14.0deg) }
+    20% { transform: rotate(-8.0deg) }
+    30% { transform: rotate(14.0deg) }
+    40% { transform: rotate(-4.0deg) }
+    50% { transform: rotate(10.0deg) }
+    60% { transform: rotate( 0.0deg) }
+    100% { transform: rotate( 0.0deg) }
+}
+.emoji-wave {
+    display: inline-block;
+    animation: wave-animation 2.5s infinite;
+    transform-origin: 70% 70%;
+}
+
+</style> <script>
+// ==================== 1. ANIMASI SCROLL (INTERSECTION OBSERVER) ====================
+document.addEventListener("DOMContentLoaded", function () {
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                animationObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    const elementsToAnimate = document.querySelectorAll(".scroll-fade-up");
+    elementsToAnimate.forEach((element) => animationObserver.observe(element));
+});
+
+// ==================== 2. EFEK MENGETIK OTOMATIS (TYPING EFFECT) ====================
+const words = ["Software Engineer", "Tech Enthusiast", "Front-End Developer"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+const typingSpeed = 100;  
+const erasingSpeed = 50;  
+const delayBetweenWords = 2000; 
+
+function typeEffect() {
+    const typingElement = document.getElementById("typing-text");
+    if (!typingElement) return;
+
+    const currentWord = words[wordIndex];
+
+    if (isDeleting) {
+        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    let dynamicDelay = isDeleting ? erasingSpeed : typingSpeed;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+        dynamicDelay = delayBetweenWords; 
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length; 
+        dynamicDelay = 500; 
+    }
+
+    setTimeout(typeEffect, dynamicDelay);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(typeEffect, 1000); 
+});
+</script>
+
 
 
 </head>
@@ -601,11 +791,11 @@ nav a {
 
         <!-- HERO SECTION YANG BERSIH -->
         <section class="hero">
-            <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727085413" target="_blank">
+            <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank">
                 <img src="Profile Github.png" alt="Timothy Nathaniel Laurencio" class="profile-img">
             </a>
             <h1>Hi, I'm Timothy Nathaniel Laurencio</h1>
-            <p>Software Engineer | Open Source Contributor</p>
+            <p>Software Engineer | Tech Enthusiast | Front-End Developer</p>
         </section> <!-- Penutup Hero Section -->
 
         <!-- SEKSI ABOUT ME BARU (2 KOLOM + POIN VISUAL) -->
@@ -626,8 +816,9 @@ nav a {
                     <div class="about-text-side">
                         <span class="section-tag">GET TO KNOW ME</span>
                         <h2>About Me</h2>
-                        <p class="about-subtitle">Software Engineer | Open Source Contributor</p>
-                        
+<p class="about-subtitle">
+    I am a <span id="typing-text"></span><span class="cursor">|</span>
+</p>                        
                         <div class="visual-points">
                             <!-- Poin 1: Pendidikan -->
                             <div class="point-item">
@@ -643,7 +834,7 @@ nav a {
                                 <div class="point-icon">💻</div>
                                 <div class="point-content">
                                     <h3>Tech & Innovation</h3>
-                                    <p>Passionate about modern software architecture, database design, and full-stack development. Experienced in building scalable systems from scratch, writing clean and maintainable code, and leveraging backend frameworks to transform complex technical requirements into efficient, user-centric software solutions.</p>
+                                    <p>Passionate about modern software architecture, database design, and front-End Development.. Experienced in building scalable systems from scratch, writing clean and maintainable code, and leveraging backend frameworks to transform complex technical requirements into efficient, user-centric software solutions.</p>
                                 </div>
                             </div>
                             
@@ -680,10 +871,6 @@ nav a {
             </div>
        </div>
         </section>
-
-        <section id="journey" class="journey-section">
-            <div class="education-card-container">
-    
 
 <section id="journey" class="journey-section">
     <div class="education-card-container">
@@ -746,36 +933,83 @@ nav a {
     <div class="education-card-container">
         <h2 class="section-title">Tech Stack</h2>
         <div class="tech-grid">
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">C++</span>
-            <span class="tech-badge">ROS 2</span>
-            <span class="tech-badge">Docker</span>
-        </div>
+    <!-- Languages -->
+    <span class="tech-badge">Python</span>
+    <span class="tech-badge">C++</span>
+    <span class="tech-badge">JavaScript</span>
+    <span class="tech-badge">HTML5</span>
+    <span class="tech-badge">CSS3</span>    
+    
+    <!-- Graphics & Web Frameworks -->
+    <span class="tech-badge">Three.js</span>
+    <span class="tech-badge">OpenSceneGraph</span>
+    <span class="tech-badge">Unity</span>
+    <span class="tech-badge">Django</span>
+    
+    <!-- Database & Tools -->
+    <span class="tech-badge">MySQL</span>
+        <span class="tech-badge">SQL Lite</span>
+    <span class="tech-badge">Git / GitHub</span>
+</div>
+
     </div>
 </section>
 
-<section id="projects" class="journey-section">
-    <div class="education-card-container">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-portfolio-card">
-            <h3>Nama Proyek</h3>
-            <p>Deskripsi singkat tentang proyek sistem otonom atau software yang dibangun.</p>
-            <a href="https://github.com/" target="_blank" class="github-link-btn">
-                <i class="fab fa-github"></i> GitHub Link
+<section id="projects" class="journey-section scroll-fade-up">
+    <div class="education-card-container" style="padding: 45px 30px;">
+        
+        <span class="section-tag" style="display: block; text-align: center; font-size: 0.85rem; color: #0073b1; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 8px;">MY WORK</span>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 12px; color: #222222; font-size: 2rem; font-weight: 700;">Featured Projects</h2>
+        <p style="text-align: center; color: #666666; margin-bottom: 35px; font-size: 0.95rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+            Beberapa proyek sistem, perangkat lunak, dan simulasi grafis yang telah saya kembangkan.
+        </p>
+
+        <div class="education-card" style="margin-bottom: 20px; background: #f8f9fa; padding: 25px; border-radius: 12px; border: 1px solid #eaeaea; text-align: left;">
+            <div class="edu-details">
+                <span class="edu-date" style="color: #0073b1; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px;">Django & MySQL</span>
+                <h3 style="margin: 6px 0 10px 0; font-size: 1.25rem; color: #222222; font-weight: 600;">Computer Store Management System</h3>
+                <p style="color: #555555; line-height: 1.6; font-size: 0.95rem; margin: 0;">Sistem manajemen inventaris toko komputer terintegrasi yang menangani arsitektur database relasional, pemrosesan transaksi data, dan operasi CRUD secara aman.</p>
+            </div>
+        </div>
+
+        <div class="education-card" style="margin-bottom: 30px; background: #f8f9fa; padding: 25px; border-radius: 12px; border: 1px solid #eaeaea; text-align: left;">
+            <div class="edu-details">
+                <span class="edu-date" style="color: #0073b1; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px;">3D Graphics & Simulation</span>
+                <h3 style="margin: 6px 0 10px 0; font-size: 1.25rem; color: #222222; font-weight: 600;">Interactive 3D Simulation & Digital Twin</h3>
+                <p style="color: #555555; line-height: 1.6; font-size: 0.95rem; margin: 0;">Pengembangan visualisasi lingkungan interaktif 3D berfokus pada manajemen hierarki objek (*scene graph*), optimasi performa *rendering real-time*, serta konsep dasar pemrosesan sistem otonom.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="https://github.com" target="_blank" style="background-color: #0073b1; color: white; padding: 12px 30px; display: inline-block; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0, 115, 177, 0.2);">
+                <i class="fab fa-github" style="margin-right: 8px;"></i> View More on GitHub
             </a>
         </div>
+        
     </div>
 </section>
 
-<section id="contact" class="journey-section">
-    <div class="education-card-container" style="text-align: center;">
-        <h2 class="section-title">Let's Connect</h2>
-        <p style="color: #666666; margin-bottom: 25px;">
-            Feel free to reach out for collaborations or opportunities!
+
+<section id="contact" class="journey-section scroll-fade-up" style="margin-top: 50px;">
+    <div class="education-card-container contact-card-interactive" style="text-align: center; padding: 50px 30px; background: linear-gradient(to bottom, #ffffff, #f8fbff); border-radius: 16px; border: 1px solid #eaeaea; box-shadow: 0 10px 30px rgba(0, 115, 177, 0.04);">
+        
+        <span class="emoji-wave" style="font-size: 2.5rem; margin-bottom: 10px;">🤝</span>
+        <h2 class="section-title" style="margin-bottom: 15px; color: #222222; font-size: 2.2rem;">Let's Connect</h2>
+        
+        <p style="color: #666666; margin-bottom: 35px; font-size: 1.05rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            Saya selalu terbuka untuk mendiskusikan peluang baru, ide teknologi, atau kolaborasi proyek. Jangan ragu untuk menyapa!
         </p>
-        <div class="contact-buttons-wrapper">
-            <a href="mailto:emailkamu@gmail.com" class="contact-btn email">Email Me</a>
-            <a href="https://linkedin.com/in/" target="_blank" class="contact-btn linkedin">LinkedIn</a>
+        
+        <div class="contact-buttons-wrapper" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            
+            <a href="mailto:emailkamu@gmail.com" target="_blank" class="btn-email-interactive" style="background-color: #0073b1; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0, 115, 177, 0.25);">
+                <i class="fas fa-envelope"></i> Email Me
+            </a>
+            
+            <a href="https://linkedin.com/in/username-kamu" target="_blank" class="btn-linkedin-interactive" style="background-color: white; color: #0073b1; border: 2px solid #0073b1; padding: 10px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            
         </div>
     </div>
 </section>
