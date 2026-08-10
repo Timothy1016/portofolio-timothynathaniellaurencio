@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -16,6 +18,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Software Engineer</title>
+
+    
   <style>
 
     body {
@@ -38,6 +42,174 @@
     margin: 0;
     padding: 0;
 }
+
+/* Posisi & Tampilan Tombol Toggle */
+.theme-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background-color: #0f172a;
+  color: #ffffff;
+  border: 1px solid #334155;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 9999;
+  transition: all 0.25s ease;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.theme-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Style Ketika Mode Gelap Aktif */
+body.dark-mode {
+  background-color: rgba(15, 23, 42, 0.92) !important;
+  background-image: url('bg-photo.jpeg') !important;
+  background-attachment: fixed !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-blend-mode: multiply !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .education-card-container,
+body.dark-mode .about-card-container,
+body.dark-mode .contact-card-interactive,
+body.dark-mode .project-card,
+body.dark-mode div[class*="card"],
+body.dark-mode .education-card,
+body.dark-mode .education-card .edu-details,
+body.dark-mode .contact-buttons-wrapper,
+body.dark-mode .contact-buttons-wrapper a,
+body.dark-mode .link-card,
+body.dark-mode .tech-badge {
+  background-color: rgba(15, 23, 42, 0.92) !important;
+  border-color: rgba(148, 163, 184, 0.16) !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .container {
+  background-color: transparent !important;
+}
+
+body.dark-mode .contact-card-interactive {
+  background: #111827 !important;
+  border-color: rgba(148, 163, 184, 0.20) !important;
+}
+
+body.dark-mode .contact-card-interactive .section-title {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .contact-card-interactive p {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .btn-email-interactive,
+body.dark-mode .btn-linkedin-interactive {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+body.dark-mode .btn-linkedin-interactive:hover {
+  background-color: #0ea5e9 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .tech-badge {
+  background-color: #111827 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+}
+
+body.dark-mode .tech-badge:hover {
+  background-color: #0ea5e9 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .education-card,
+body.dark-mode .education-card-container,
+body.dark-mode .contact-card-interactive,
+body.dark-mode .project-card,
+body.dark-mode .link-card,
+body.dark-mode .about-card-container {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .theme-btn {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #e2e8f0;
+}
+
+body.dark-mode header,
+body.dark-mode .hero,
+body.dark-mode .link-card-section,
+body.dark-mode #about,
+body.dark-mode #journey,
+body.dark-mode #tech,
+body.dark-mode #projects,
+body.dark-mode #contact {
+  background-color: transparent !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode .section-tag,
+body.dark-mode .section-title,
+body.dark-mode .about-subtitle,
+body.dark-mode .point-content h3,
+body.dark-mode .point-content p,
+body.dark-mode .edu-details h3,
+body.dark-mode .edu-degree,
+body.dark-mode .edu-date,
+body.dark-mode .edu-desc,
+body.dark-mode .card-title,
+body.dark-mode .card-text,
+body.dark-mode .card-cta,
+body.dark-mode nav a,
+body.dark-mode .logo strong,
+body.dark-mode .tech-badge {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .card-text,
+body.dark-mode p,
+body.dark-mode .about-subtitle,
+body.dark-mode .point-content p,
+body.dark-mode .edu-degree,
+body.dark-mode .edu-date,
+body.dark-mode .edu-desc {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .card-cta,
+body.dark-mode nav a,
+body.dark-mode .section-tag {
+  color: #7dd3fc !important;
+}
+
+body.dark-mode .link-card {
+  background-color: rgba(15, 23, 42, 0.55) !important;
+  border-color: rgba(148, 163, 184, 0.20) !important;
+}
+
+body.dark-mode .theme-btn {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #e2e8f0;
+}
+
 
 /* Styling untuk Nama yang Elit */
 /* Styling untuk Nama yang Elit */
@@ -335,6 +507,146 @@ nav a {
     object-fit: cover; /* Agar foto tidak gepeng */
     display: block;
     margin: 0 auto 1rem auto;
+}
+
+.link-card-section {
+    padding: 3rem 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.link-card-section .education-card-container {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    color: #111827;
+}
+
+.link-card-section .education-card-container p {
+    color: #475569;
+}
+
+body.dark-mode .link-card-section .education-card-container {
+    background: rgba(15, 23, 42, 0.92) !important;
+    border-color: rgba(148, 163, 184, 0.18) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    color: #f8fafc !important;
+}
+
+body.dark-mode .link-card-section .education-card-container p {
+    color: #cbd5e1 !important;
+}
+
+.link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: stretch;
+}
+
+.link-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 190px;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.98);
+    border: 1px solid rgba(226,232,240,0.7);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    color: #111827;
+    text-decoration: none;
+}
+
+.link-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 35px rgba(15, 23, 42, 0.16);
+    border-color: #38bdf8;
+}
+
+.link-card:hover .card-title,
+.link-card:hover .card-cta {
+    color: #0f172a;
+}
+
+.link-card:hover .card-text {
+    color: #334155;
+}
+
+.link-card .card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.link-card .card-title {
+    color: #111827;
+    font-size: 1.2rem;
+}
+
+.link-card .card-text {
+    color: #475569;
+}
+
+.link-card .card-cta {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+body.dark-mode .link-card {
+    background: rgba(15, 23, 42, 0.55) !important;
+    border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+body.dark-mode .link-card .card-title {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .link-card .card-text {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .link-card .card-cta {
+    color: #7dd3fc !important;
+}
+
+.link-card .card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.link-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.link-card .card-text {
+    color: rgba(248, 250, 252, 0.78);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.link-card .card-cta {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+@media (max-width: 900px) {
+    .link-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .link-card-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
         /* Grid Tech Stack */
@@ -697,37 +1009,87 @@ nav a {
 }
 /* ================= EFEK INTERAKTIF LET'S CONNECT ================= */
 .contact-card-interactive {
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    text-align: center;
+    padding: 50px 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
+
 /* Kotak melayang tipis saat didekati */
 .contact-card-interactive:hover {
     transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(0, 115, 177, 0.08) !important;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.14) !important;
+}
+
+.contact-card-interactive .emoji-wave {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.contact-card-interactive .section-title {
+    margin-bottom: 15px;
+    color: #0f172a;
+    font-size: 2.2rem;
+}
+
+.contact-card-interactive p {
+    color: #334155;
+    margin-bottom: 35px;
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 /* Tombol Email (Solid) */
-.btn-email-interactive {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-}
-.btn-email-interactive:hover {
-    transform: translateY(-3px);
-    background-color: #005a8b !important; /* Biru agak gelap saat di-hover */
-    box-shadow: 0 8px 20px rgba(0, 115, 177, 0.35) !important;
-}
-.btn-email-interactive:active {
-    transform: translateY(-1px) scale(0.97); /* Efek membal seperti tombol fisik */
-}
-
-/* Tombol LinkedIn (Outline) */
+.btn-email-interactive,
 .btn-linkedin-interactive {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
+
+.btn-email-interactive {
+    background-color: #0f172a;
+    color: #f8fafc;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-email-interactive:hover {
+    transform: translateY(-3px);
+    background-color: #005a8b !important;
+    box-shadow: 0 8px 20px rgba(0, 115, 177, 0.35) !important;
+}
+
+.btn-email-interactive:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+.btn-linkedin-interactive {
+    background-color: transparent;
+    color: #7dd3fc;
+    border: 2px solid rgba(125, 211, 252, 0.7);
+}
+
 .btn-linkedin-interactive:hover {
     transform: translateY(-3px);
-    background-color: #0073b1 !important; /* Berubah jadi solid biru */
+    background-color: #0073b1 !important;
     color: white !important;
     box-shadow: 0 8px 20px rgba(0, 115, 177, 0.2) !important;
 }
+
 .btn-linkedin-interactive:active {
     transform: translateY(-1px) scale(0.97);
 }
@@ -829,6 +1191,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </nav>
         </header>
 
+        <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+
         <!-- HERO SECTION YANG BERSIH -->
         <section class="hero">
             <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank">
@@ -837,6 +1201,109 @@ document.addEventListener("DOMContentLoaded", () => {
             <h1>Hi, I'm Timothy Nathaniel Laurencio</h1>
             <p>Software Engineer | Tech Enthusiast | Front-End Developer</p>
         </section> <!-- Penutup Hero Section -->
+
+        <!-- QUICK LINK GRID SESUAI DESAIN YANG DIMINTA -->
+        <section id="quick-links" class="link-card-section scroll-fade-up">
+            <div class="education-card-container">
+                <span class="section-tag">QUICK ACCESS</span>
+                <h2>Direct Links</h2>
+                <p style="color: #111827; max-width: 720px; margin: 0.75rem auto 0; font-size: 1rem; line-height: 1.7;">
+                    Klik tombol di bawah ini untuk langsung membuka profil LinkedIn, GitHub, CV, email, WhatsApp, atau bagian portofolio.
+                </p>
+               <div class="link-card-grid">
+
+  <!-- 1. LinkedIn -->
+  <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank" class="link-card">
+    <div>
+      <div class="card-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" style="width: 28px; height: 28px;" />
+      </div>
+      <div class="card-title">LinkedIn</div>
+      <div class="card-text">Professional Profile</div>
+    </div>
+    <div class="card-cta">Visit Profile &rarr;</div>
+  </a>
+
+  <!-- 2. GitHub -->
+  <a href="https://github.com/username" target="_blank" class="link-card">
+    <div>
+      <div class="card-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="width: 28px; height: 28px;" />
+      </div>
+      <div class="card-title">GitHub</div>
+      <div class="card-text">My Projects</div>
+    </div>
+    <div class="card-cta">Explore Code &rarr;</div>
+  </a>
+
+  <!-- 3. Resume -->
+  <a href="Resume.pdf" target="_blank" class="link-card">
+    <div>
+      <div class="card-icon">📄</div>
+      <div class="card-title">Resume</div>
+      <div class="card-text">Download CV</div>
+    </div>
+    <div class="card-cta">Download &rarr;</div>
+  </a>
+
+  <!-- 4. Email -->
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=timothynathaniellaurencio@gmail.com" target="_blank" class="link-card">    <div>
+      <div class="card-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Email" style="width: 28px; height: 28px;" />
+      </div>
+      <div class="card-title">Email</div>
+      <div class="card-text">Contact Me</div>
+    </div>
+    <div class="card-cta">Send Email &rarr;</div>
+  </a>
+
+  <!-- 5. WhatsApp -->
+  <a href="https://wa.me/6285286289012" target="_blank" class="link-card">
+    <div>
+      <div class="card-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 28px; height: 28px;" />
+      </div>
+      <div class="card-title">WhatsApp</div>
+      <div class="card-text">Let's Connect</div>
+    </div>
+    <div class="card-cta">Chat Now &rarr;</div>
+  </a>
+
+  <!-- 6. Portfolio -->
+  <a href="#projects" class="link-card">
+    <div>
+      <div class="card-icon">🌐</div>
+      <div class="card-title">Portfolio</div>
+      <div class="card-text">Full Website</div>
+    </div>
+    <div class="card-cta">View Portfolio &rarr;</div>
+  </a>
+
+</div>
+
+                        <div class="card-cta">Send Email →</div>
+                    </a>
+                    <a href="https://wa.me/6285286289012" target="_blank" class="link-card">
+                        <div>
+                            <div class="card-icon">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 28px; height: 28px;" />
+</div>
+                            <div class="card-title">WhatsApp</div>
+                            <div class="card-text">Let's Connect</div>
+                        </div>
+                        <div class="card-cta">Chat Now →</div>
+                    </a>
+                    <a href="#projects" class="link-card">
+                        <div>
+                            <div class="card-icon">🌐</div>
+                            <div class="card-title">Portfolio</div>
+                            <div class="card-text">Full Website</div>
+                        </div>
+                        <div class="card-cta">View Portfolio →</div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- SEKSI ABOUT ME BARU (2 KOLOM + POIN VISUAL) -->
         <section id="about" class="about-section">
@@ -909,7 +1376,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
             </div>
-       </div>
         </section>
 
 <section id="journey" class="journey-section">
@@ -964,10 +1430,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 </section>
-
-</section>
-
-
 
        <section id="tech" class="journey-section">
     <div class="education-card-container">
@@ -1030,24 +1492,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <section id="contact" class="journey-section scroll-fade-up" style="margin-top: 50px;">
-    <div class="education-card-container contact-card-interactive" style="text-align: center; padding: 50px 30px; background: linear-gradient(to bottom, #ffffff, #f8fbff); border-radius: 16px; border: 1px solid #eaeaea; box-shadow: 0 10px 30px rgba(0, 115, 177, 0.04);">
-        
-        <span class="emoji-wave" style="font-size: 2.5rem; margin-bottom: 10px;">🤝</span>
-        <h2 class="section-title" style="margin-bottom: 15px; color: #222222; font-size: 2.2rem;">Let's Connect</h2>
-        
-        <p style="color: #666666; margin-bottom: 35px; font-size: 1.05rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-Open to new opportunities, collaborations, and tech discussions. Let's build something great together!        </p>
-        
-        <div class="contact-buttons-wrapper" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-            
-            <a href="mailto:timothynathaniellaurencio@gmail.com" target="_blank" class="btn-email-interactive" style="background-color: #0073b1; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0, 115, 177, 0.25);">
+    <div class="education-card-container contact-card-interactive">
+        <span class="emoji-wave">🤝</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <p>Open to new opportunities, collaborations, and tech discussions. Let's build something great together!</p>
+        <div class="contact-buttons-wrapper">
+            <a href="mailto:timothynathaniellaurencio@gmail.com" target="_blank" class="btn-email-interactive">
                 <i class="fas fa-envelope"></i> Email Me
             </a>
-            
-            <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank" class="btn-linkedin-interactive" style="background-color: white; color: #0073b1; border: 2px solid #0073b1; padding: 10px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+            <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank" class="btn-linkedin-interactive">
                 <i class="fab fa-linkedin"></i> LinkedIn
             </a>
-            
         </div>
     </div>
 </section>
@@ -1062,5 +1517,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
     </script>
+
+    <script>
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  // Cek apakah user pernah memilih mode sebelumnya
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggleBtn.innerHTML = '☀️ Light Mode';
+  }
+
+  // Fungsi saat tombol diklik
+  themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    const isDark = document.body.classList.contains('dark-mode');
+    themeToggleBtn.innerHTML = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    
+    // Simpan pilihan di browser
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+</script>
+
 </body>
 </html>
