@@ -69,6 +69,9 @@ header {
 }
 
 header .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
     flex: 0 0 auto;
     min-width: 0;
 }
@@ -76,6 +79,23 @@ header .logo {
 header .logo strong {
     color: #ffffff;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.24);
+}
+
+.brand-mark {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(148,163,184,0.36));
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #f8fafc;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.24);
+    flex-shrink: 0;
 }
 
 nav {
@@ -271,10 +291,11 @@ body.dark-mode .theme-btn {
 /* Styling untuk Nama yang Elit */
 /* Styling untuk Nama yang Elit */
 .name-highlight {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 800;
     margin: 0;
     display: inline-block;
+    letter-spacing: -0.04em;
     
     /* Gunakan background-clip untuk teks gradien yang bersih */
     background: linear-gradient(90deg, #1e3a8a, #0d9488);
@@ -1199,13 +1220,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 </head>
-<body>
+<body id="top">
     <div class="container">
         <!-- HEADER & NAVIGASI YANG SUDAH DIPERBAIKI -->
         <header>
-            <div class="logo">
-            <strong class="name-highlight name-animate">Timothy Nathaniel Laurencio</strong>
-            </div>
+            <a href="#top" class="logo" aria-label="Go to home top" style="text-decoration: none;">
+                <div class="brand-mark">TNL</div>
+                <strong class="name-highlight name-animate">Timothy Nathaniel Laurencio</strong>
+            </a>
             <nav>
                 <a href="#journey">Journey</a>
                 <a href="#about">About Me</a>
@@ -1231,10 +1253,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- QUICK LINK GRID SESUAI DESAIN YANG DIMINTA -->
         <section id="quick-links" class="link-card-section scroll-fade-up">
             <div class="education-card-container">
-                <span class="section-tag">QUICK ACCESS</span>
-                <h2>Direct Links</h2>
-                <p style="color: #111827; max-width: 720px; margin: 0.75rem auto 0; font-size: 1rem; line-height: 1.7;">
-                    Quick access to my professional profiles, resume, and contact channels.
+                <span class="section-tag">LET'S CONNECT • GET TO KNOW ME • SAVE CONTACT</span>
+                <h2>Let’s Connect</h2>
+                <p style="color: #111827; max-width: 780px; margin: 0.75rem auto 0; font-size: 1rem; line-height: 1.7;">
+                    Let’s connect, get to know me, and save my contact details for future opportunities, collaborations, and meaningful conversations.
                 </p>
                <div class="link-card-grid">
 
@@ -1490,22 +1512,6 @@ document.addEventListener("DOMContentLoaded", () => {
 </section>
 
 
-<section id="contact" class="journey-section scroll-fade-up" style="margin-top: 50px;">
-    <div class="education-card-container contact-card-interactive">
-        <span class="emoji-wave">🤝</span>
-        <h2 class="section-title">Let's Connect</h2>
-        <p>Open to new opportunities, collaborations, and tech discussions. Let's build something great together!</p>
-        <div class="contact-buttons-wrapper">
-            <a href="mailto:timothynathaniellaurencio@gmail.com" target="_blank" class="btn-email-interactive">
-                <i class="fas fa-envelope"></i> Email Me
-            </a>
-            <a href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank" class="btn-linkedin-interactive">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-        </div>
-    </div>
-</section>
-
     <script>
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -1549,9 +1555,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       navContact: 'Contact',
       heroGreeting: "Hi, I'm Timothy Nathaniel Laurencio",
       heroSubtitle: 'Software Engineer | Tech Enthusiast | Front-End Developer',
-      quickTag: 'QUICK ACCESS',
-      quickTitle: 'Direct Links',
-      quickDesc: 'Quick access to my professional profiles, resume, and contact channels.',
+      quickTag: "LET'S CONNECT • GET TO KNOW ME • SAVE CONTACT",
+      quickTitle: 'Let’s Connect',
+      quickDesc: 'Let’s connect, get to know me, and save my contact details for future opportunities, collaborations, and meaningful conversations.',
       linkedInTitle: 'LinkedIn',
       linkedInText: 'Professional Profile',
       linkedInCta: 'Visit Profile →',
@@ -1618,9 +1624,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       navContact: '联系',
       heroGreeting: '嗨，我是Timothy Nathaniel Laurencio',
       heroSubtitle: '软件工程师 | 技术爱好者 | 前端开发者',
-      quickTag: '快速访问',
-      quickTitle: '快速链接',
-      quickDesc: '点击下面的按钮直接打开我的LinkedIn、GitHub、简历、电子邮件、WhatsApp或作品集。',
+      quickTag: '让我们联系 • 了解我 • 保存联系方式',
+      quickTitle: '让我们联系',
+      quickDesc: '让我联系、了解我，并保存我的联系方式，方便未来的机会、合作和有意义的交流。',
       linkedInTitle: 'LinkedIn',
       linkedInText: '职业资料',
       linkedInCta: '访问资料 →',
