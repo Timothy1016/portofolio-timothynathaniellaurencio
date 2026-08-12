@@ -434,9 +434,9 @@ body::before {
 
 /* Bulatan Slot Logo / Emoji */
 .edu-logo {
-    font-size: 1.6rem;
-    min-width: 50px;
-    height: 50px;
+    font-size: 1.8rem;
+    min-width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -448,10 +448,25 @@ body::before {
 }
 
 .edu-logo img {
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
     border-radius: 4px;
+}
+
+.edu-link {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+.edu-link:hover .edu-logo {
+    border-color: #0073b1;
+    box-shadow: 0 6px 14px rgba(0, 115, 177, 0.18);
+}
+
+.edu-link:focus-visible {
+    outline: 2px solid #0073b1;
+    outline-offset: 4px;
 }
 
 /* Detail Teks */
@@ -464,16 +479,8 @@ body::before {
 @media (max-width: 576px) {
     .education-card-container { padding: 25px; }
     .timeline-line { left: 20px; }
-    .edu-logo { min-width: 40px; height: 40px; font-size: 1.3rem; }
+    .edu-logo { min-width: 48px; height: 48px; font-size: 1.4rem; }
     .education-card { gap: 15px; }
-}
-
-
-.edu-logo {
-    font-size: 2rem;
-    min-width: 50px;
-    display: flex;
-    justify-content: center;
 }
 
 .edu-details h3 { font-size: 1.1rem; margin: 0; color: #333; }
@@ -521,28 +528,32 @@ body::before {
         header {
             flex-direction: column;
             align-items: stretch;
-            padding: 1rem;
+            padding: 0.75rem 1rem;
+            gap: 0.75rem;
         }
         nav {
             width: 100%;
             justify-content: center;
-            margin-top: 10px;
-            gap: 12px;
+            margin-top: 0;
+            gap: 10px;
             flex-wrap: wrap;
+            padding: 0.25rem 0;
         }
         .toggle-buttons {
             width: 100%;
             justify-content: center;
-            margin-top: 12px;
+            margin-top: 0;
             flex-wrap: wrap;
             gap: 8px;
         }
         .theme-btn {
-            flex: 1 1 auto;
-            min-width: 120px;
+            flex: 0 1 auto;
+            min-width: 100px;
+            padding: 8px 10px;
+            font-size: 0.82rem;
         }
         nav a {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
     }
 
@@ -953,28 +964,6 @@ body.dark-mode .link-card .card-cta {
     background: transparent;
 }
 
-/* Bulatan Slot Logo / Emoji */
-.edu-logo {
-    font-size: 1.6rem;
-    min-width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ffffff;                /* Menutupi garis abu-abu di belakang bulatan */
-    border: 2px solid #eef0f2;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-    z-index: 3;
-}
-
-.edu-logo img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 4px;
-}
-
 /* Detail Teks */
 .edu-details h3 { font-size: 1.15rem; color: #333333; margin: 0 0 4px 0; font-weight: 600; }
 .edu-degree { font-size: 0.95rem; color: #444444; margin: 0 0 4px 0; }
@@ -985,7 +974,7 @@ body.dark-mode .link-card .card-cta {
 @media (max-width: 576px) {
     .education-card-container { padding: 25px; }
     .timeline-line { left: 20px; }
-    .edu-logo { min-width: 40px; height: 40px; font-size: 1.3rem; }
+    .edu-logo { min-width: 60px; height: 60px; font-size: 1.6rem; }
     .education-card { gap: 15px; }
 }
 
@@ -1245,7 +1234,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="section-tag">QUICK ACCESS</span>
                 <h2>Direct Links</h2>
                 <p style="color: #111827; max-width: 720px; margin: 0.75rem auto 0; font-size: 1rem; line-height: 1.7;">
-                    Klik tombol di bawah ini untuk langsung membuka profil LinkedIn, GitHub, CV, email, WhatsApp, atau bagian portofolio.
+                    Quick access to my professional profiles, resume, and contact channels.
                 </p>
                <div class="link-card-grid">
 
@@ -1411,7 +1400,9 @@ document.addEventListener("DOMContentLoaded", () => {
             
             <!-- KULIAH -->
             <div class="education-card">
-                <div class="edu-logo">🎓</div>
+                <a href="https://www.njtech.edu.cn" target="_blank" rel="noopener noreferrer" class="edu-link">
+                    <div class="edu-logo"><img src="logo-njtech.png" alt="Nanjing Tech University Logo"></div>
+                </a>
                 <div class="edu-details">
                     <h3>Nanjing Tech University</h3>
                     <p class="edu-degree">Bachelor of Engineering in Computer Science and Technology</p>
@@ -1422,23 +1413,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <!-- SMA -->
             <div class="education-card">
-                <div class="edu-logo">🏫</div>
+                <a href="https://www.smaignasiusskw.sch.id/" target="_blank" rel="noopener noreferrer" class="edu-link">
+                    <div class="edu-logo">🏫</div>
+                </a>
                 <div class="edu-details">
                     <h3>Santo Ignasius High School</h3>
                     <p class="edu-degree">Science (IPA)</p>
                     <p class="edu-date">2019 — 2022</p>
                     <p class="edu-desc">Developed a growing interest in technology and computers during this period, which later became the foundation for pursuing a degree in Computer Science.</p>
-                </div>
-            </div>
-
-            <!-- SMP -->
-            <div class="education-card">
-                <div class="edu-logo">🏫</div>
-                <div class="edu-details">
-                    <h3>Pengabdi Junior Highschool</h3>
-                    <p class="edu-degree">Junior High School</p>
-                    <p class="edu-date">2016 — 2019</p>
-                    <p class="edu-desc">Built the fundamentals of logical thinking and problem-solving, sparking an early curiosity toward the world of technology.</p>
                 </div>
             </div>
 
@@ -1558,7 +1540,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 <script>
   const languageToggleBtn = document.getElementById('language-toggle');
-
   const translations = {
     en: {
       navJourney: 'Journey',
@@ -1570,7 +1551,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       heroSubtitle: 'Software Engineer | Tech Enthusiast | Front-End Developer',
       quickTag: 'QUICK ACCESS',
       quickTitle: 'Direct Links',
-      quickDesc: 'Klik tombol di bawah ini untuk langsung membuka profil LinkedIn, GitHub, CV, email, WhatsApp, atau bagian portofolio.',
+      quickDesc: 'Quick access to my professional profiles, resume, and contact channels.',
       linkedInTitle: 'LinkedIn',
       linkedInText: 'Professional Profile',
       linkedInCta: 'Visit Profile →',
@@ -1770,87 +1751,111 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     linkedinButton: document.querySelector('.btn-linkedin-interactive')
   };
 
+  function setText(element, value) {
+    if (element) {
+      element.textContent = value;
+    }
+  }
+
+  function setAboutSubtitleText(element, value) {
+    if (!element) return;
+    const textNode = Array.from(element.childNodes).find(
+      node => node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0
+    );
+    if (textNode) {
+      textNode.nodeValue = value;
+    } else {
+      element.insertBefore(document.createTextNode(value), element.firstChild);
+    }
+  }
+
   function setLanguage(lang) {
     const data = translations[lang];
-    elements.navJourney.textContent = data.navJourney;
-    elements.navAbout.textContent = data.navAbout;
-    elements.navTech.textContent = data.navTech;
-    elements.navProjects.textContent = data.navProjects;
-    elements.navContact.textContent = data.navContact;
-    elements.heroGreeting.textContent = data.heroGreeting;
-    elements.heroSubtitle.textContent = data.heroSubtitle;
-    elements.quickTag.textContent = data.quickTag;
-    elements.quickTitle.textContent = data.quickTitle;
-    elements.quickDesc.textContent = data.quickDesc;
-    elements.linkedInTitle.textContent = data.linkedInTitle;
-    elements.linkedInText.textContent = data.linkedInText;
-    elements.linkedInCta.textContent = data.linkedInCta;
-    elements.githubTitle.textContent = data.githubTitle;
-    elements.githubText.textContent = data.githubText;
-    elements.githubCta.textContent = data.githubCta;
-    elements.resumeTitle.textContent = data.resumeTitle;
-    elements.resumeText.textContent = data.resumeText;
-    elements.resumeCta.textContent = data.resumeCta;
-    elements.emailTitle.textContent = data.emailTitle;
-    elements.emailText.textContent = data.emailText;
-    elements.emailCta.textContent = data.emailCta;
-    elements.whatsappTitle.textContent = data.whatsappTitle;
-    elements.whatsappText.textContent = data.whatsappText;
-    elements.whatsappCta.textContent = data.whatsappCta;
-    elements.portfolioTitle.textContent = data.portfolioTitle;
-    elements.portfolioText.textContent = data.portfolioText;
-    elements.portfolioCta.textContent = data.portfolioCta;
-    elements.aboutTag.textContent = data.aboutTag;
-    elements.aboutTitle.textContent = data.aboutTitle;
-    elements.aboutSubtitle.childNodes[0].nodeValue = data.aboutSubtitle;
-    elements.point1Title.textContent = data.point1Title;
-    elements.point1Text.textContent = data.point1Text;
-    elements.point2Title.textContent = data.point2Title;
-    elements.point2Text.textContent = data.point2Text;
-    elements.point3Title.textContent = data.point3Title;
-    elements.point3Text.textContent = data.point3Text;
-    elements.galleryTitle.textContent = data.galleryTitle;
-    elements.journeyTag.textContent = data.journeyTag;
-    elements.journeyTitle.textContent = data.journeyTitle;
-    elements.journeyDesc.textContent = data.journeyDesc;
-    elements.techTitle.textContent = data.techTitle;
-    elements.projectTag.textContent = data.projectTag;
-    elements.projectTitle.textContent = data.projectTitle;
-    elements.projectDesc.textContent = data.projectDesc;
-    elements.project1Tag.textContent = data.project1Tag;
-    elements.project1Title.textContent = data.project1Title;
-    elements.project1Text.textContent = data.project1Text;
-    elements.project2Tag.textContent = data.project2Tag;
-    elements.project2Title.textContent = data.project2Title;
-    elements.project2Text.textContent = data.project2Text;
-    elements.edu1School.textContent = data.edu1School;
-    elements.edu1Degree.textContent = data.edu1Degree;
-    elements.edu1Date.textContent = data.edu1Date;
-    elements.edu1Desc.textContent = data.edu1Desc;
-    elements.edu2School.textContent = data.edu2School;
-    elements.edu2Degree.textContent = data.edu2Degree;
-    elements.edu2Date.textContent = data.edu2Date;
-    elements.edu2Desc.textContent = data.edu2Desc;
-    elements.edu3School.textContent = data.edu3School;
-    elements.edu3Degree.textContent = data.edu3Degree;
-    elements.edu3Date.textContent = data.edu3Date;
-    elements.edu3Desc.textContent = data.edu3Desc;
-    elements.contactTitle.textContent = data.contactTitle;
-    elements.contactText.textContent = data.contactText;
-    elements.emailButton.textContent = data.emailButton;
-    elements.linkedinButton.textContent = data.linkedinButton;
+    if (!data) return;
 
-    languageToggleBtn.textContent = lang === 'en' ? '中文' : 'EN';
+    setText(elements.navJourney, data.navJourney);
+    setText(elements.navAbout, data.navAbout);
+    setText(elements.navTech, data.navTech);
+    setText(elements.navProjects, data.navProjects);
+    setText(elements.navContact, data.navContact);
+    setText(elements.heroGreeting, data.heroGreeting);
+    setText(elements.heroSubtitle, data.heroSubtitle);
+    setText(elements.quickTag, data.quickTag);
+    setText(elements.quickTitle, data.quickTitle);
+    setText(elements.quickDesc, data.quickDesc);
+    setText(elements.linkedInTitle, data.linkedInTitle);
+    setText(elements.linkedInText, data.linkedInText);
+    setText(elements.linkedInCta, data.linkedInCta);
+    setText(elements.githubTitle, data.githubTitle);
+    setText(elements.githubText, data.githubText);
+    setText(elements.githubCta, data.githubCta);
+    setText(elements.resumeTitle, data.resumeTitle);
+    setText(elements.resumeText, data.resumeText);
+    setText(elements.resumeCta, data.resumeCta);
+    setText(elements.emailTitle, data.emailTitle);
+    setText(elements.emailText, data.emailText);
+    setText(elements.emailCta, data.emailCta);
+    setText(elements.whatsappTitle, data.whatsappTitle);
+    setText(elements.whatsappText, data.whatsappText);
+    setText(elements.whatsappCta, data.whatsappCta);
+    setText(elements.portfolioTitle, data.portfolioTitle);
+    setText(elements.portfolioText, data.portfolioText);
+    setText(elements.portfolioCta, data.portfolioCta);
+    setText(elements.aboutTag, data.aboutTag);
+    setText(elements.aboutTitle, data.aboutTitle);
+    setAboutSubtitleText(elements.aboutSubtitle, data.aboutSubtitle);
+    setText(elements.point1Title, data.point1Title);
+    setText(elements.point1Text, data.point1Text);
+    setText(elements.point2Title, data.point2Title);
+    setText(elements.point2Text, data.point2Text);
+    setText(elements.point3Title, data.point3Title);
+    setText(elements.point3Text, data.point3Text);
+    setText(elements.galleryTitle, data.galleryTitle);
+    setText(elements.journeyTag, data.journeyTag);
+    setText(elements.journeyTitle, data.journeyTitle);
+    setText(elements.journeyDesc, data.journeyDesc);
+    setText(elements.techTitle, data.techTitle);
+    setText(elements.projectTag, data.projectTag);
+    setText(elements.projectTitle, data.projectTitle);
+    setText(elements.projectDesc, data.projectDesc);
+    setText(elements.project1Tag, data.project1Tag);
+    setText(elements.project1Title, data.project1Title);
+    setText(elements.project1Text, data.project1Text);
+    setText(elements.project2Tag, data.project2Tag);
+    setText(elements.project2Title, data.project2Title);
+    setText(elements.project2Text, data.project2Text);
+    setText(elements.edu1School, data.edu1School);
+    setText(elements.edu1Degree, data.edu1Degree);
+    setText(elements.edu1Date, data.edu1Date);
+    setText(elements.edu1Desc, data.edu1Desc);
+    setText(elements.edu2School, data.edu2School);
+    setText(elements.edu2Degree, data.edu2Degree);
+    setText(elements.edu2Date, data.edu2Date);
+    setText(elements.edu2Desc, data.edu2Desc);
+    setText(elements.edu3School, data.edu3School);
+    setText(elements.edu3Degree, data.edu3Degree);
+    setText(elements.edu3Date, data.edu3Date);
+    setText(elements.edu3Desc, data.edu3Desc);
+    setText(elements.contactTitle, data.contactTitle);
+    setText(elements.contactText, data.contactText);
+    setText(elements.emailButton, data.emailButton);
+    setText(elements.linkedinButton, data.linkedinButton);
+
+    if (languageToggleBtn) {
+      languageToggleBtn.textContent = lang === 'en' ? '中文' : 'EN';
+    }
     localStorage.setItem('language', lang);
   }
 
   let currentLanguage = localStorage.getItem('language') || 'en';
   setLanguage(currentLanguage);
 
-  languageToggleBtn.addEventListener('click', () => {
-    currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
-    setLanguage(currentLanguage);
-  });
+  if (languageToggleBtn) {
+    languageToggleBtn.addEventListener('click', () => {
+      currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
+      setLanguage(currentLanguage);
+    });
+  }
 </script>
 
 </body>
