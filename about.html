@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<title>About — Timothy Nathaniel Laurencio</title>
+<meta name="description" content="About Timothy Nathaniel Laurencio, a software engineer and Computer Science graduate.">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#000000;
+  --surface:#090909;
+  --surface-2:#111111;
+  --text:#F1EEE8;
+  --soft:#C3BDB4;
+  --muted:#8D867E;
+  --border:rgba(255,255,255,.10);
+  --accent:#A58D78;
+  --accent-2:#B5A07E;
+  --olive:#858778;
+  --header:rgba(0,0,0,.96);
+}
+
+html[data-theme="light"]{
+  --bg:#EDE3D3;
+  --surface:#F7F0E5;
+  --surface-2:#E9DECE;
+  --text:#241F1A;
+  --soft:#5F564D;
+  --muted:#756A60;
+  --border:rgba(36,31,26,.14);
+  --accent:#806A58;
+  --accent-2:#927B61;
+  --olive:#6F7565;
+  --header:rgba(237,227,211,.95);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Times New Roman",Times,serif;
+  transition:background .2s ease,color .2s ease;
+}
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+header{
+  position:sticky;top:0;z-index:1000;
+  background:var(--header);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.nav{
+  min-height:68px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;object-fit:contain}
+.brand span{font-size:.95rem;letter-spacing:.05em}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{
+  position:relative;text-decoration:none;color:var(--soft);
+  font-size:.92rem;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;
+  background:var(--accent);transition:width .18s ease;
+}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-tools{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:38px;height:38px;border:1px solid var(--border);border-radius:50%;
+  background:transparent;color:var(--text);cursor:pointer;
+}
+.icon-btn:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--border))}
+.mobile-btn{display:none}
+.mobile-menu{display:none}
+main{overflow:hidden}
+.hero{
+  padding:110px 0 86px;
+  border-bottom:1px solid var(--border);
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:24px;color:var(--accent);
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent-2)}
+h1,h2,h3,p{margin-top:0}
+h1{
+  max-width:1000px;margin-bottom:26px;
+  font-size:clamp(3.3rem,7.3vw,7.4rem);
+  line-height:.92;letter-spacing:-.045em;font-weight:500;
+}
+h2{
+  font-size:clamp(2.25rem,4.2vw,4.35rem);
+  line-height:.98;letter-spacing:-.035em;font-weight:500;
+}
+p{color:var(--soft);line-height:1.72;font-size:1.03rem}
+.section{padding:96px 0;border-bottom:1px solid var(--border)}
+.section-head{
+  display:grid;grid-template-columns:.42fr 1fr;gap:50px;
+  align-items:start;margin-bottom:54px;
+}
+.section-copy{max-width:690px}
+.button{
+  min-height:44px;padding:0 18px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  border:1px solid var(--border);border-radius:999px;
+  text-decoration:none;transition:.18s ease;
+}
+.button.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.button.secondary{background:transparent;color:var(--text)}
+.button:hover{transform:translateY(-1px)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{padding:34px 0;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:.88rem}
+.toast{
+  position:fixed;right:18px;bottom:18px;z-index:5000;
+  padding:11px 14px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);border-radius:10px;
+  opacity:0;transform:translateY(8px);pointer-events:none;transition:.18s ease;
+}
+.toast.show{opacity:1;transform:none}
+@media(max-width:850px){
+  .nav-links{display:none}
+  .mobile-btn{display:inline-grid;place-items:center}
+  .mobile-menu{
+    padding:14px 20px 18px;border-top:1px solid var(--border);
+    background:var(--header)
+  }
+  .mobile-menu.open{display:grid;gap:14px}
+  .mobile-menu a{text-decoration:none;color:var(--soft)}
+  .section-head{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:600px){
+  .container{width:min(100% - 24px,1180px)}
+  .hero{padding:78px 0 62px}
+  .section{padding:70px 0}
+  h1{font-size:clamp(2.85rem,16vw,4.5rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+.about-hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.62fr);gap:70px;align-items:end}
+.about-photo{position:relative}
+.about-photo img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;
+  border:1px solid var(--border);background:var(--surface);
+}
+.about-note{margin-top:12px;color:var(--muted);font-size:.86rem}
+.about-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.short-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:54px}
+.short-quote{font-size:clamp(2rem,3.4vw,3.6rem);line-height:1.06;color:var(--text)}
+.story-copy{max-width:760px}
+.story-copy p{font-size:1.1rem}
+.work-rows{border-top:1px solid var(--border)}
+.work-row{
+  display:grid;grid-template-columns:80px .6fr 1fr;gap:26px;
+  padding:28px 0;border-bottom:1px solid var(--border)
+}
+.work-row .num{color:var(--muted)}
+.work-row h3{font-size:1.45rem;font-weight:500;margin:0}
+.work-row p{margin:0}
+
+.about-cta{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+@media(max-width:850px){
+ .about-hero-grid,.short-grid,.about-cta{grid-template-columns:1fr}
+ .about-photo{max-width:520px}
+ .work-row{grid-template-columns:50px 1fr}
+ .work-row p{grid-column:2}
+ 
+}
+
+
+/* =====================================================================
+   FINAL SITE-WIDE THEME AUDIT
+   Dark = pure black / charcoal with no page-level glow.
+   Light = soft beige.
+   ===================================================================== */
+html[data-theme="dark"],
+html[data-theme="dark"] body{
+  --bg:#000000 !important;
+  --surface:#090909 !important;
+  --surface-2:#111111 !important;
+  --text:#F2EEE8 !important;
+  --soft:#C8C1B8 !important;
+  --muted:#918A82 !important;
+  --border:rgba(255,255,255,.10) !important;
+  --header:rgba(0,0,0,.97) !important;
+  background:#000000 !important;
+  color:#F2EEE8 !important;
+}
+
+html[data-theme="dark"] main,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] footer{
+  background:#000000 !important;
+}
+
+html[data-theme="dark"] header{
+  background:rgba(0,0,0,.97) !important;
+  box-shadow:none !important;
+}
+
+html[data-theme="dark"] .button,
+html[data-theme="dark"] .icon-btn{
+  box-shadow:none !important;
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body{
+  --bg:#EDE3D3 !important;
+  --surface:#F7F0E5 !important;
+  --surface-2:#E9DECE !important;
+  --text:#241F1A !important;
+  --soft:#5F564D !important;
+  --muted:#756A60 !important;
+  --border:rgba(36,31,26,.14) !important;
+  --header:rgba(237,227,211,.96) !important;
+  background:#EDE3D3 !important;
+  color:#241F1A !important;
+}
+
+
+
+/* FINAL BLACK / BEIGE BLEND */
+html[data-theme="dark"],html[data-theme="dark"] body{
+  --bg:#000!important;--surface:#090909!important;--surface-2:#111!important;--text:#f2eee8!important;--soft:#c8c1b8!important;--muted:#918a82!important;--border:rgba(255,255,255,.10)!important;
+  background:#000!important;color:#f2eee8!important;
+}
+html[data-theme="light"],html[data-theme="light"] body{
+  --bg:#ede3d3!important;--surface:#f4ecdf!important;--surface-2:#e5d9c7!important;--text:#241f1a!important;--soft:#5f564d!important;--muted:#756a60!important;--border:rgba(36,31,26,.14)!important;
+  background:#ede3d3!important;color:#241f1a!important;
+}
+html[data-theme="dark"] main,html[data-theme="dark"] .hero,html[data-theme="dark"] .section,html[data-theme="dark"] footer{background:#000!important}
+html[data-theme="light"] main,html[data-theme="light"] .hero,html[data-theme="light"] .section,html[data-theme="light"] footer{background:#ede3d3!important}
+.section,.hero{box-shadow:none!important}
+
+
+
+html[data-theme="light"] .short-grid,html[data-theme="light"] .work-rows,html[data-theme="light"] .about-cta{background:transparent!important}
+html[data-theme="dark"] .short-grid,html[data-theme="dark"] .work-rows,html[data-theme="dark"] .about-cta{background:transparent!important}
+
+
+
+/* =====================================================
+   DYNAMIC PERSONAL GALLERY
+===================================================== */
+.dynamic-gallery{
+  width:100%;
+}
+
+.dynamic-gallery-stage{
+  position:relative;
+  height:clamp(540px,64vw,760px);
+  overflow:hidden;
+}
+
+.gallery-card{
+  position:absolute;
+  top:0;
+  height:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  overflow:hidden;
+  transition:
+    left .72s cubic-bezier(.22,.75,.2,1),
+    width .72s cubic-bezier(.22,.75,.2,1),
+    transform .72s cubic-bezier(.22,.75,.2,1),
+    opacity .42s ease;
+}
+
+.gallery-card.is-main{
+  left:0;
+  width:44%;
+  z-index:3;
+}
+
+.gallery-card.is-side-a{
+  left:45.3%;
+  width:26.8%;
+  z-index:2;
+}
+
+.gallery-card.is-side-b{
+  left:73.4%;
+  width:26.6%;
+  z-index:1;
+}
+
+.gallery-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border:1px solid var(--border);
+  transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .35s ease;
+}
+
+.gallery-card:hover img{
+  transform:scale(1.018);
+}
+
+.gallery-card:not(.is-main) img{
+  filter:saturate(.88) contrast(.97);
+}
+
+.gallery-card-label{
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:max-content;
+  max-width:calc(100% - 32px);
+  padding:9px 12px;
+  border:1px solid var(--border);
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  color:var(--text);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .22s ease,transform .22s ease;
+  pointer-events:none;
+}
+
+.gallery-card:hover .gallery-card-label,
+.gallery-card:focus-visible .gallery-card-label,
+.gallery-card.is-main .gallery-card-label{
+  opacity:1;
+  transform:none;
+}
+
+.gallery-card-label small{
+  color:var(--accent);
+  letter-spacing:.08em;
+}
+
+.gallery-card-label span{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.dynamic-gallery-controls{
+  min-height:62px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:22px;
+  align-items:center;
+  padding-top:18px;
+}
+
+.gallery-progress{
+  display:flex;
+  align-items:baseline;
+  gap:7px;
+  color:var(--muted);
+  font-size:.88rem;
+}
+
+.gallery-progress strong{
+  color:var(--text);
+  font-size:1.15rem;
+  font-weight:500;
+}
+
+.gallery-dots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+}
+
+.gallery-dot{
+  width:28px;
+  height:3px;
+  padding:0;
+  border:0;
+  background:color-mix(in srgb,var(--text) 16%,transparent);
+  cursor:pointer;
+  transition:width .22s ease,background .22s ease;
+}
+
+.gallery-dot.active{
+  width:48px;
+  background:var(--accent);
+}
+
+.gallery-nav{
+  display:flex;
+  gap:8px;
+}
+
+.gallery-arrow,
+.lightbox-close,
+.lightbox-arrow{
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+
+.gallery-arrow{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+}
+
+.gallery-arrow:hover,
+.lightbox-close:hover,
+.lightbox-arrow:hover{
+  border-color:color-mix(in srgb,var(--accent) 55%,var(--border));
+  transform:translateY(-1px);
+}
+
+/* Lightbox */
+.gallery-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  grid-template-columns:72px minmax(0,1fr) 72px;
+  align-items:center;
+  gap:18px;
+  padding:34px;
+  background:rgba(0,0,0,.92);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .24s ease,visibility .24s ease;
+}
+
+.gallery-lightbox.open{
+  opacity:1;
+  visibility:visible;
+}
+
+.lightbox-figure{
+  margin:0;
+  min-width:0;
+  display:grid;
+  justify-items:center;
+  gap:14px;
+}
+
+.lightbox-figure img{
+  max-width:min(1120px,100%);
+  max-height:82vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border:1px solid rgba(255,255,255,.14);
+  transform:scale(.985);
+  opacity:.72;
+  transition:transform .28s ease,opacity .28s ease;
+}
+
+.gallery-lightbox.open .lightbox-figure img{
+  transform:scale(1);
+  opacity:1;
+}
+
+.lightbox-figure figcaption{
+  color:rgba(255,255,255,.72);
+  font-size:.92rem;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:22px;
+  right:22px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(14,14,14,.8);
+  color:#fff;
+  border-color:rgba(255,255,255,.16);
+}
+
+.lightbox-arrow{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:rgba(14,14,14,.76);
+  color:#fff;
+  border-color:rgba(255,255,255,.16);
+}
+
+.lightbox-prev{justify-self:end}
+.lightbox-next{justify-self:start}
+
+body.gallery-open{
+  overflow:hidden;
+}
+
+/* Theme blending */
+html[data-theme="dark"] .gallery-card-label{
+  background:rgba(0,0,0,.78);
+}
+
+html[data-theme="light"] .gallery-card-label{
+  background:rgba(237,227,211,.84);
+}
+
+/* Mobile becomes a touch-friendly horizontal gallery */
+@media(max-width:850px){
+  .dynamic-gallery-stage{
+    position:relative;
+    height:auto;
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    padding-bottom:2px;
+  }
+
+  .dynamic-gallery-stage::-webkit-scrollbar{
+    display:none;
+  }
+
+  .gallery-card,
+  .gallery-card.is-main,
+  .gallery-card.is-side-a,
+  .gallery-card.is-side-b{
+    position:relative;
+    left:auto;
+    top:auto;
+    flex:0 0 min(78vw,520px);
+    width:auto;
+    height:clamp(430px,94vw,620px);
+    scroll-snap-align:center;
+    z-index:auto;
+  }
+
+  .gallery-card img{
+    min-height:0;
+  }
+
+  .gallery-card-label{
+    opacity:1;
+    transform:none;
+  }
+
+  .dynamic-gallery-controls{
+    grid-template-columns:auto 1fr auto;
+  }
+}
+
+@media(max-width:560px){
+  .gallery-card,
+  .gallery-card.is-main,
+  .gallery-card.is-side-a,
+  .gallery-card.is-side-b{
+    flex-basis:86vw;
+    height:118vw;
+    max-height:590px;
+  }
+
+  .gallery-dots{
+    display:none;
+  }
+
+  .dynamic-gallery-controls{
+    grid-template-columns:1fr auto;
+  }
+
+  .gallery-progress{
+    justify-self:start;
+  }
+
+  .gallery-lightbox{
+    grid-template-columns:1fr;
+    padding:72px 14px 24px;
+  }
+
+  .lightbox-arrow{
+    position:absolute;
+    bottom:22px;
+  }
+
+  .lightbox-prev{left:18px}
+  .lightbox-next{right:18px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .gallery-card,
+  .gallery-card img,
+  .gallery-card-label,
+  .gallery-lightbox,
+  .lightbox-figure img,
+  .gallery-dot{
+    transition:none !important;
+  }
+}
+
+</style>
+<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="logo.png" alt="TNL logo"><span>TNL</span></a>
+    <nav class="nav-links"><a href="index.html#work" class="">Work</a><a href="about.html" class="active">About</a><a href="index.html#skills" class="">Skills</a><a href="journey.html" class="">Journey</a><a href="contact.html" class="">Contact</a></nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="soundBtn" type="button" aria-label="Toggle sound"><i class="fa-solid fa-volume-low"></i></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme"><i class="fa-regular fa-sun"></i></button>
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language" style="width:auto;padding:0 12px;border-radius:999px">中文</button>
+      <button class="icon-btn mobile-btn" id="mobileBtn" type="button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="index.html#skills">Skills</a><a href="journey.html">Journey</a><a href="contact.html">Contact</a></div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container about-hero-grid">
+    <div class="reveal">
+      <div class="eyebrow" data-en="About me" data-zh="关于我">About me</div>
+      <h1 data-en="I learn by making things, then asking why they worked." data-zh="我通过做东西来学习，然后再问自己：为什么它能工作？">I learn by making things, then asking why they worked.</h1>
+      <p class="section-copy" data-en="I studied Computer Science at Nanjing Tech University. Most of what I remember best came from building projects, debugging them, and trying again when the first version was messy." data-zh="我在南京工业大学学习计算机科学。我记得最深的东西，大多来自做项目、调试，以及在第一版很乱的时候重新来过。">I studied Computer Science at Nanjing Tech University. Most of what I remember best came from building projects, debugging them, and trying again when the first version was messy.</p>
+      <div class="about-actions">
+        <a class="button primary" href="TimothyNathanielLaurencio_CV.pdf" target="_blank"><i class="fa-regular fa-file-lines"></i><span data-en="Resume" data-zh="简历">Resume</span></a>
+        <a class="button secondary" href="index.html#work"><span data-en="See my work" data-zh="查看项目">See my work</span></a>
+      </div>
+    </div>
+    <div class="about-photo reveal">
+      <img src="foto1.png" alt="Portrait of Timothy">
+      <div class="about-note">Computer Science · Nanjing Tech University</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+ <div class="container short-grid reveal">
+   <div>
+     <div class="eyebrow" data-en="The short version" data-zh="简单来说">The short version</div>
+     <div class="short-quote" data-en="I’m more interested in understanding than looking impressive." data-zh="比起看起来厉害，我更在意真正理解。">I’m more interested in understanding than looking impressive.</div>
+   </div>
+   <div class="story-copy">
+     <p data-en="I like software because there is always something concrete to test. An idea either becomes useful, breaks somewhere, or teaches me what I missed." data-zh="我喜欢软件，是因为总有东西可以实际测试。一个想法要么变得有用，要么在某处出错，要么让我发现自己漏掉了什么。">I like software because there is always something concrete to test. An idea either becomes useful, breaks somewhere, or teaches me what I missed.</p>
+     <p data-en="That is also how I approach learning. I prefer building a real version early, seeing what feels wrong, and improving it instead of waiting for the perfect plan." data-zh="这也是我学习的方式。我更喜欢尽早做出一个真实版本，看看哪里不对，再慢慢改，而不是一直等一个完美计划。">That is also how I approach learning. I prefer building a real version early, seeing what feels wrong, and improving it instead of waiting for the perfect plan.</p>
+     <p data-en="Outside code, I care a lot about people, faith, travel, and the small experiences that change how I think." data-zh="代码之外，我也很在意人与人之间的关系、信仰、旅行，以及那些慢慢改变我想法的小经历。">Outside code, I care a lot about people, faith, travel, and the small experiences that change how I think.</p>
+   </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+   <div class="section-head reveal">
+     <div class="eyebrow" data-en="How I usually work" data-zh="我通常怎么做">How I usually work</div>
+     <h2 data-en="Simple rules I keep coming back to." data-zh="我总会回到这些简单原则。">Simple rules I keep coming back to.</h2>
+   </div>
+   <div class="work-rows reveal">
+     <div class="work-row"><span class="num">01</span><h3 data-en="Start with the real problem" data-zh="先看真正的问题">Start with the real problem</h3><p data-en="Before adding features, I try to understand what someone actually needs to do." data-zh="在加功能之前，我会先理解用户真正需要完成什么。">Before adding features, I try to understand what someone actually needs to do.</p></div>
+     <div class="work-row"><span class="num">02</span><h3 data-en="Build a real version" data-zh="先做出能用的版本">Build a real version</h3><p data-en="A working version gives better feedback than a long list of assumptions." data-zh="一个能运行的版本，比一长串假设更容易得到真实反馈。">A working version gives better feedback than a long list of assumptions.</p></div>
+     <div class="work-row"><span class="num">03</span><h3 data-en="Keep it understandable" data-zh="保持可理解">Keep it understandable</h3><p data-en="I would rather have code and interfaces I can explain clearly than complexity for its own sake." data-zh="比起为了复杂而复杂，我更喜欢自己能清楚解释的代码和界面。">I would rather have code and interfaces I can explain clearly than complexity for its own sake.</p></div>
+     <div class="work-row"><span class="num">04</span><h3 data-en="Stay open to changing my mind" data-zh="愿意改变想法">Stay open to changing my mind</h3><p data-en="If testing shows the first idea was wrong, that is useful information, not a failure." data-zh="如果测试证明第一版想法不对，那也是有用的信息，不是失败。">If testing shows the first idea was wrong, that is useful information, not a failure.</p></div>
+   </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+   <div class="section-head reveal">
+     <div class="eyebrow" data-en="Outside the editor" data-zh="代码之外">Outside the editor</div>
+     <h2 data-en="A few parts of life that don’t fit in a project card." data-zh="有些生活，不适合塞进项目卡片里。">A few parts of life that don’t fit in a project card.</h2>
+   </div>
+   <div class="dynamic-gallery reveal" id="dynamicGallery" aria-label="Personal photo gallery">
+     <div class="dynamic-gallery-stage">
+       <button class="gallery-card is-main" type="button" data-index="0" aria-label="Open photo 1">
+         <img src="foto3.png" alt="Graduation day">
+         <span class="gallery-card-label">
+           <small>01</small>
+           <span data-en="Graduation day" data-zh="毕业日">Graduation day</span>
+         </span>
+       </button>
+
+       <button class="gallery-card is-side-a" type="button" data-index="1" aria-label="Open photo 2">
+         <img src="foto4.png" alt="Outside the editor">
+         <span class="gallery-card-label">
+           <small>02</small>
+           <span data-en="Outside the editor" data-zh="代码之外">Outside the editor</span>
+         </span>
+       </button>
+
+       <button class="gallery-card is-side-b" type="button" data-index="2" aria-label="Open photo 3">
+         <img src="foto5.png" alt="A good day">
+         <span class="gallery-card-label">
+           <small>03</small>
+           <span data-en="A good day" data-zh="美好的一天">A good day</span>
+         </span>
+       </button>
+     </div>
+
+     <div class="dynamic-gallery-controls">
+       <div class="gallery-progress" aria-live="polite">
+         <strong id="galleryCurrent">01</strong>
+         <span>/</span>
+         <span>03</span>
+       </div>
+
+       <div class="gallery-dots" aria-label="Choose photo">
+         <button class="gallery-dot active" type="button" data-go="0" aria-label="Show photo 1"></button>
+         <button class="gallery-dot" type="button" data-go="1" aria-label="Show photo 2"></button>
+         <button class="gallery-dot" type="button" data-go="2" aria-label="Show photo 3"></button>
+       </div>
+
+       <div class="gallery-nav">
+         <button class="gallery-arrow" id="galleryPrev" type="button" aria-label="Previous photo">
+           <i class="fa-solid fa-arrow-left"></i>
+         </button>
+         <button class="gallery-arrow" id="galleryNext" type="button" aria-label="Next photo">
+           <i class="fa-solid fa-arrow-right"></i>
+         </button>
+       </div>
+     </div>
+   </div>
+
+   <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo viewer">
+     <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close photo viewer">
+       <i class="fa-solid fa-xmark"></i>
+     </button>
+     <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous photo">
+       <i class="fa-solid fa-arrow-left"></i>
+     </button>
+     <figure class="lightbox-figure">
+       <img id="lightboxImage" src="foto3.png" alt="Graduation day">
+       <figcaption id="lightboxCaption">Graduation day</figcaption>
+     </figure>
+     <button class="lightbox-arrow lightbox-next" id="lightboxNext" type="button" aria-label="Next photo">
+       <i class="fa-solid fa-arrow-right"></i>
+     </button>
+   </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container about-cta reveal">
+   <div>
+     <div class="eyebrow" data-en="Next" data-zh="下一页">Next</div>
+     <h2 data-en="The timeline makes more sense with the places." data-zh="把时间线和地点放在一起，会更完整。">The timeline makes more sense with the places.</h2>
+   </div>
+   <a class="button primary" href="journey.html"><span data-en="Open Journey" data-zh="查看经历">Open Journey</span><i class="fa-solid fa-arrow-right"></i></a>
+ </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Timothy Nathaniel Laurencio. All rights reserved.</span>
+    <a href="#top" data-en="Back to top ↑" data-zh="返回顶部 ↑">Back to top ↑</a>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const THEME_KEY='portfolio-theme';
+const LANG_KEY='portfolio-language';
+const SOUND_KEY='portfolio-sound';
+
+function currentTheme(){return document.documentElement.dataset.theme||'dark'}
+function applyTheme(theme){
+  const t=theme==='light'?'light':'dark';
+  document.documentElement.dataset.theme=t;
+  document.body.classList.toggle('dark',t==='dark');
+  localStorage.setItem(THEME_KEY,t);
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta)meta.setAttribute('content',t==='dark'?'#000000':'#EDE3D3');
+  const icon=document.querySelector('#themeBtn i');
+  if(icon)icon.className=t==='dark'?'fa-regular fa-sun':'fa-regular fa-moon';
+}
+function toggleTheme(){applyTheme(currentTheme()==='dark'?'light':'dark')}
+
+let currentLanguage=localStorage.getItem(LANG_KEY)||'en';
+function applyLanguage(lang){
+  currentLanguage=lang==='zh'?'zh':'en';
+  localStorage.setItem(LANG_KEY,currentLanguage);
+  document.documentElement.lang=currentLanguage==='zh'?'zh-CN':'en';
+  document.querySelectorAll('[data-en][data-zh]').forEach(el=>{
+    el.textContent=el.dataset[currentLanguage];
+  });
+  const btn=document.getElementById('langBtn');
+  if(btn)btn.textContent=currentLanguage==='en'?'中文':'EN';
+}
+
+let soundOn=localStorage.getItem(SOUND_KEY)!=='off';
+function clickSound(freq=520){
+  if(!soundOn)return;
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.frequency.value=freq;osc.type='sine';
+    gain.gain.setValueAtTime(.025,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.07);
+    osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.08);
+  }catch(e){}
+}
+function toggleSound(){
+  soundOn=!soundOn;
+  localStorage.setItem(SOUND_KEY,soundOn?'on':'off');
+  const i=document.querySelector('#soundBtn i');
+  if(i)i.className=soundOn?'fa-solid fa-volume-low':'fa-solid fa-volume-xmark';
+}
+
+function showToast(message){
+  const t=document.getElementById('toast');
+  if(!t)return;
+  t.textContent=message;t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer=setTimeout(()=>t.classList.remove('show'),1500);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  applyTheme(localStorage.getItem(THEME_KEY)||'dark');
+  applyLanguage(currentLanguage);
+  const si=document.querySelector('#soundBtn i');
+  if(si)si.className=soundOn?'fa-solid fa-volume-low':'fa-solid fa-volume-xmark';
+
+  document.getElementById('themeBtn')?.addEventListener('click',()=>{toggleTheme();clickSound(610)});
+  document.getElementById('soundBtn')?.addEventListener('click',toggleSound);
+  document.getElementById('langBtn')?.addEventListener('click',()=>applyLanguage(currentLanguage==='en'?'zh':'en'));
+  document.getElementById('mobileBtn')?.addEventListener('click',()=>{
+    document.getElementById('mobileMenu')?.classList.toggle('open');
+  });
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+});
+
+
+/* =====================================================
+   Dynamic personal gallery
+===================================================== */
+const galleryItems = [
+  { src:'foto3.png', en:'Graduation day', zh:'毕业日', alt:'Graduation day' },
+  { src:'foto4.png', en:'Outside the editor', zh:'代码之外', alt:'Outside the editor' },
+  { src:'foto5.png', en:'A good day', zh:'美好的一天', alt:'A good day' }
+];
+
+let galleryIndex = 0;
+let galleryTimer = null;
+let galleryTouchStartX = 0;
+
+function galleryCards(){
+  return [...document.querySelectorAll('#dynamicGallery .gallery-card')];
+}
+
+function updateDynamicGallery(nextIndex, options={}){
+  const cards = galleryCards();
+  if(!cards.length) return;
+
+  galleryIndex = (nextIndex + cards.length) % cards.length;
+
+  const positions = ['is-main','is-side-a','is-side-b'];
+  cards.forEach((card, originalIndex)=>{
+    card.classList.remove(...positions);
+    const relative = (originalIndex - galleryIndex + cards.length) % cards.length;
+    card.classList.add(positions[relative]);
+  });
+
+  document.querySelectorAll('.gallery-dot').forEach((dot,i)=>{
+    dot.classList.toggle('active',i===galleryIndex);
+  });
+
+  const current = document.getElementById('galleryCurrent');
+  if(current) current.textContent = String(galleryIndex+1).padStart(2,'0');
+
+  // Mobile: center the selected image without moving the whole page vertically.
+  if(window.matchMedia('(max-width:850px)').matches && options.scrollMobile !== false){
+    const stage = document.querySelector('.dynamic-gallery-stage');
+    const card = cards[galleryIndex];
+    if(stage && card){
+      const left = card.offsetLeft - (stage.clientWidth/2) + (card.clientWidth/2);
+      stage.scrollTo({left:Math.max(0,left),behavior:options.instant?'auto':'smooth'});
+    }
+  }
+}
+
+function stopGalleryAuto(){
+  if(galleryTimer){
+    clearInterval(galleryTimer);
+    galleryTimer=null;
+  }
+}
+
+function startGalleryAuto(){
+  stopGalleryAuto();
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  galleryTimer=setInterval(()=>updateDynamicGallery(galleryIndex+1,{scrollMobile:false}),4800);
+}
+
+function openGalleryLightbox(index){
+  galleryIndex=(index+galleryItems.length)%galleryItems.length;
+  const item=galleryItems[galleryIndex];
+  const box=document.getElementById('galleryLightbox');
+  const image=document.getElementById('lightboxImage');
+  const caption=document.getElementById('lightboxCaption');
+  if(!box || !image || !caption) return;
+
+  image.src=item.src;
+  image.alt=item.alt;
+  caption.textContent=currentLanguage==='zh'?item.zh:item.en;
+  box.classList.add('open');
+  box.setAttribute('aria-hidden','false');
+  document.body.classList.add('gallery-open');
+  document.getElementById('lightboxClose')?.focus();
+  stopGalleryAuto();
+}
+
+function closeGalleryLightbox(){
+  const box=document.getElementById('galleryLightbox');
+  if(!box) return;
+  box.classList.remove('open');
+  box.setAttribute('aria-hidden','true');
+  document.body.classList.remove('gallery-open');
+  startGalleryAuto();
+}
+
+function moveLightbox(step){
+  galleryIndex=(galleryIndex+step+galleryItems.length)%galleryItems.length;
+  const item=galleryItems[galleryIndex];
+  const image=document.getElementById('lightboxImage');
+  const caption=document.getElementById('lightboxCaption');
+  if(image){
+    image.style.opacity='.35';
+    image.style.transform='scale(.985)';
+    setTimeout(()=>{
+      image.src=item.src;
+      image.alt=item.alt;
+      if(caption) caption.textContent=currentLanguage==='zh'?item.zh:item.en;
+      requestAnimationFrame(()=>{
+        image.style.opacity='1';
+        image.style.transform='scale(1)';
+      });
+    },120);
+  }
+  updateDynamicGallery(galleryIndex,{scrollMobile:false});
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const gallery=document.getElementById('dynamicGallery');
+  if(!gallery) return;
+
+  updateDynamicGallery(0,{instant:true,scrollMobile:false});
+  startGalleryAuto();
+
+  document.getElementById('galleryPrev')?.addEventListener('click',()=>{
+    updateDynamicGallery(galleryIndex-1);
+    startGalleryAuto();
+    clickSound(460);
+  });
+
+  document.getElementById('galleryNext')?.addEventListener('click',()=>{
+    updateDynamicGallery(galleryIndex+1);
+    startGalleryAuto();
+    clickSound(620);
+  });
+
+  document.querySelectorAll('.gallery-dot').forEach(dot=>{
+    dot.addEventListener('click',()=>{
+      updateDynamicGallery(Number(dot.dataset.go)||0);
+      startGalleryAuto();
+    });
+  });
+
+  galleryCards().forEach(card=>{
+    card.addEventListener('click',()=>{
+      openGalleryLightbox(Number(card.dataset.index)||0);
+    });
+  });
+
+  gallery.addEventListener('mouseenter',stopGalleryAuto);
+  gallery.addEventListener('mouseleave',startGalleryAuto);
+  gallery.addEventListener('focusin',stopGalleryAuto);
+  gallery.addEventListener('focusout',e=>{
+    if(!gallery.contains(e.relatedTarget)) startGalleryAuto();
+  });
+
+  const stage=document.querySelector('.dynamic-gallery-stage');
+  stage?.addEventListener('touchstart',e=>{
+    galleryTouchStartX=e.changedTouches[0]?.clientX||0;
+    stopGalleryAuto();
+  },{passive:true});
+
+  stage?.addEventListener('touchend',e=>{
+    const endX=e.changedTouches[0]?.clientX||0;
+    const delta=endX-galleryTouchStartX;
+    if(Math.abs(delta)>45){
+      updateDynamicGallery(galleryIndex+(delta<0?1:-1));
+    }
+    startGalleryAuto();
+  },{passive:true});
+
+  document.getElementById('lightboxClose')?.addEventListener('click',closeGalleryLightbox);
+  document.getElementById('lightboxPrev')?.addEventListener('click',()=>moveLightbox(-1));
+  document.getElementById('lightboxNext')?.addEventListener('click',()=>moveLightbox(1));
+
+  document.getElementById('galleryLightbox')?.addEventListener('click',e=>{
+    if(e.target.id==='galleryLightbox') closeGalleryLightbox();
+  });
+
+  document.addEventListener('keydown',e=>{
+    const box=document.getElementById('galleryLightbox');
+    if(!box?.classList.contains('open')) return;
+    if(e.key==='Escape') closeGalleryLightbox();
+    if(e.key==='ArrowLeft') moveLightbox(-1);
+    if(e.key==='ArrowRight') moveLightbox(1);
+  });
+
+  window.addEventListener('resize',()=>{
+    updateDynamicGallery(galleryIndex,{instant:true,scrollMobile:false});
+  });
+});
+
+</script>
+</body></html>

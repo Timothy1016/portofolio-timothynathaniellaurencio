@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<title>Contact — Timothy Nathaniel Laurencio</title>
+<meta name="description" content="Contact Timothy Nathaniel Laurencio.">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#000000;
+  --surface:#090909;
+  --surface-2:#111111;
+  --text:#F1EEE8;
+  --soft:#C3BDB4;
+  --muted:#8D867E;
+  --border:rgba(255,255,255,.10);
+  --accent:#A58D78;
+  --accent-2:#B5A07E;
+  --olive:#858778;
+  --header:rgba(0,0,0,.96);
+}
+
+html[data-theme="light"]{
+  --bg:#EDE3D3;
+  --surface:#F7F0E5;
+  --surface-2:#E9DECE;
+  --text:#241F1A;
+  --soft:#5F564D;
+  --muted:#756A60;
+  --border:rgba(36,31,26,.14);
+  --accent:#806A58;
+  --accent-2:#927B61;
+  --olive:#6F7565;
+  --header:rgba(237,227,211,.95);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Times New Roman",Times,serif;
+  transition:background .2s ease,color .2s ease;
+}
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+header{
+  position:sticky;top:0;z-index:1000;
+  background:var(--header);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.nav{
+  min-height:68px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;object-fit:contain}
+.brand span{font-size:.95rem;letter-spacing:.05em}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{
+  position:relative;text-decoration:none;color:var(--soft);
+  font-size:.92rem;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;
+  background:var(--accent);transition:width .18s ease;
+}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-tools{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:38px;height:38px;border:1px solid var(--border);border-radius:50%;
+  background:transparent;color:var(--text);cursor:pointer;
+}
+.icon-btn:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--border))}
+.mobile-btn{display:none}
+.mobile-menu{display:none}
+main{overflow:hidden}
+.hero{
+  padding:110px 0 86px;
+  border-bottom:1px solid var(--border);
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:24px;color:var(--accent);
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent-2)}
+h1,h2,h3,p{margin-top:0}
+h1{
+  max-width:1000px;margin-bottom:26px;
+  font-size:clamp(3.3rem,7.3vw,7.4rem);
+  line-height:.92;letter-spacing:-.045em;font-weight:500;
+}
+h2{
+  font-size:clamp(2.25rem,4.2vw,4.35rem);
+  line-height:.98;letter-spacing:-.035em;font-weight:500;
+}
+p{color:var(--soft);line-height:1.72;font-size:1.03rem}
+.section{padding:96px 0;border-bottom:1px solid var(--border)}
+.section-head{
+  display:grid;grid-template-columns:.42fr 1fr;gap:50px;
+  align-items:start;margin-bottom:54px;
+}
+.section-copy{max-width:690px}
+.button{
+  min-height:44px;padding:0 18px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  border:1px solid var(--border);border-radius:999px;
+  text-decoration:none;transition:.18s ease;
+}
+.button.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.button.secondary{background:transparent;color:var(--text)}
+.button:hover{transform:translateY(-1px)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{padding:34px 0;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:.88rem}
+.toast{
+  position:fixed;right:18px;bottom:18px;z-index:5000;
+  padding:11px 14px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);border-radius:10px;
+  opacity:0;transform:translateY(8px);pointer-events:none;transition:.18s ease;
+}
+.toast.show{opacity:1;transform:none}
+@media(max-width:850px){
+  .nav-links{display:none}
+  .mobile-btn{display:inline-grid;place-items:center}
+  .mobile-menu{
+    padding:14px 20px 18px;border-top:1px solid var(--border);
+    background:var(--header)
+  }
+  .mobile-menu.open{display:grid;gap:14px}
+  .mobile-menu a{text-decoration:none;color:var(--soft)}
+  .section-head{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:600px){
+  .container{width:min(100% - 24px,1180px)}
+  .hero{padding:78px 0 62px}
+  .section{padding:70px 0}
+  h1{font-size:clamp(2.85rem,16vw,4.5rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+.contact-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.6fr);gap:60px;align-items:end}
+.contact-hero h1{font-size:clamp(3rem,6vw,5.7rem)}
+.profile{
+  display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center;
+  padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)
+}
+.avatar{position:relative;width:150px;height:150px}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:1px solid var(--border)}
+.online{position:absolute;right:9px;bottom:10px;width:17px;height:17px;border-radius:50%;background:#39C56A;border:3px solid var(--bg)}
+.profile strong{font-size:1.2rem;font-weight:500}
+.profile p{margin:5px 0 0;font-size:.92rem}
+.contact-list{border-top:1px solid var(--border)}
+.contact-row{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;
+  border-bottom:1px solid var(--border)
+}
+.contact-main{
+  min-width:0;display:grid;grid-template-columns:44px .55fr 1fr;gap:18px;align-items:center;
+  padding:19px 0;text-decoration:none;color:inherit;transition:padding-left .18s ease
+}
+.contact-main:hover{padding-left:7px}
+.contact-icon{
+  width:40px;height:40px;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface)
+}
+.contact-row:nth-child(1) .contact-icon{color:#25D366;border-color:rgba(37,211,102,.28);background:rgba(37,211,102,.05)}
+.contact-row:nth-child(2) .contact-icon i{
+  background:linear-gradient(135deg,#405DE6,#833AB4,#C13584,#E1306C,#FD1D1D,#FCAF45);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent
+}
+.contact-row:nth-child(3) .contact-icon{color:#EA4335;border-color:rgba(234,67,53,.25)}
+.contact-row:nth-child(4) .contact-icon{color:#0A66C2;border-color:rgba(10,102,194,.26)}
+.contact-row:nth-child(5) .contact-icon{color:var(--text)}
+.contact-main .desc{color:var(--soft);opacity:0;transform:translateY(6px);animation:descIn .48s ease forwards}
+.contact-row:nth-child(2) .desc{animation-delay:.05s}
+.contact-row:nth-child(3) .desc{animation-delay:.1s}
+.contact-row:nth-child(4) .desc{animation-delay:.15s}
+.contact-row:nth-child(5) .desc{animation-delay:.2s}
+.contact-row:hover .desc{transform:translateX(4px)}
+@keyframes descIn{to{opacity:1;transform:none}}
+.copy-btn{
+  min-width:94px;height:38px;padding:0 13px;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);cursor:pointer
+}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+.copy-btn.copied{border-color:var(--olive);color:var(--olive)}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.field input,.field textarea,.field select{
+  width:100%;border:1px solid var(--border);background:var(--surface);color:var(--text);
+  padding:13px 14px;border-radius:10px;outline:none
+}
+.field textarea{min-height:160px;resize:vertical}
+.form-actions{grid-column:1/-1;display:flex;justify-content:flex-end}
+@media(max-width:850px){
+ .contact-hero-grid{grid-template-columns:1fr}
+ .profile{max-width:620px}
+}
+@media(max-width:650px){
+ .profile{grid-template-columns:96px 1fr}.avatar{width:96px;height:96px}
+ .contact-main{grid-template-columns:40px 1fr;gap:8px 13px}
+ .contact-main .desc{grid-column:2}
+ .copy-btn{width:42px;min-width:42px;padding:0}.copy-btn span{display:none}
+ .contact-form{grid-template-columns:1fr}.field.full,.form-actions{grid-column:1}
+}
+
+
+/* =====================================================================
+   FINAL SITE-WIDE THEME AUDIT
+   Dark = pure black / charcoal with no page-level glow.
+   Light = soft beige.
+   ===================================================================== */
+html[data-theme="dark"],
+html[data-theme="dark"] body{
+  --bg:#000000 !important;
+  --surface:#090909 !important;
+  --surface-2:#111111 !important;
+  --text:#F2EEE8 !important;
+  --soft:#C8C1B8 !important;
+  --muted:#918A82 !important;
+  --border:rgba(255,255,255,.10) !important;
+  --header:rgba(0,0,0,.97) !important;
+  background:#000000 !important;
+  color:#F2EEE8 !important;
+}
+
+html[data-theme="dark"] main,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] footer{
+  background:#000000 !important;
+}
+
+html[data-theme="dark"] header{
+  background:rgba(0,0,0,.97) !important;
+  box-shadow:none !important;
+}
+
+html[data-theme="dark"] .button,
+html[data-theme="dark"] .icon-btn{
+  box-shadow:none !important;
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body{
+  --bg:#EDE3D3 !important;
+  --surface:#F7F0E5 !important;
+  --surface-2:#E9DECE !important;
+  --text:#241F1A !important;
+  --soft:#5F564D !important;
+  --muted:#756A60 !important;
+  --border:rgba(36,31,26,.14) !important;
+  --header:rgba(237,227,211,.96) !important;
+  background:#EDE3D3 !important;
+  color:#241F1A !important;
+}
+
+
+
+/* FINAL BLACK / BEIGE BLEND */
+html[data-theme="dark"],html[data-theme="dark"] body{
+  --bg:#000!important;--surface:#090909!important;--surface-2:#111!important;--text:#f2eee8!important;--soft:#c8c1b8!important;--muted:#918a82!important;--border:rgba(255,255,255,.10)!important;
+  background:#000!important;color:#f2eee8!important;
+}
+html[data-theme="light"],html[data-theme="light"] body{
+  --bg:#ede3d3!important;--surface:#f4ecdf!important;--surface-2:#e5d9c7!important;--text:#241f1a!important;--soft:#5f564d!important;--muted:#756a60!important;--border:rgba(36,31,26,.14)!important;
+  background:#ede3d3!important;color:#241f1a!important;
+}
+html[data-theme="dark"] main,html[data-theme="dark"] .hero,html[data-theme="dark"] .section,html[data-theme="dark"] footer{background:#000!important}
+html[data-theme="light"] main,html[data-theme="light"] .hero,html[data-theme="light"] .section,html[data-theme="light"] footer{background:#ede3d3!important}
+.section,.hero{box-shadow:none!important}
+
+
+
+html[data-theme="light"] .profile,html[data-theme="light"] .contact-list,html[data-theme="light"] .contact-row{background:transparent!important}
+html[data-theme="dark"] .profile,html[data-theme="dark"] .contact-list,html[data-theme="dark"] .contact-row{background:transparent!important}
+html[data-theme="light"] .copy-btn,html[data-theme="light"] .field input,html[data-theme="light"] .field textarea,html[data-theme="light"] .field select{background:#e8dccb!important;color:#241f1a!important}
+html[data-theme="dark"] .copy-btn,html[data-theme="dark"] .field input,html[data-theme="dark"] .field textarea,html[data-theme="dark"] .field select{background:#0d0d0d!important;color:#f2eee8!important}
+
+
+
+/* =====================================================
+   CONTACT HERO — PROFILE ONLY
+   Removes the large "Send me a message" title and makes
+   the photo/name/introduction the hero focus.
+===================================================== */
+.contact-profile-hero{
+  padding:82px 0 68px !important;
+}
+
+.contact-profile-hero .profile-hero-card{
+  width:min(900px,100%);
+  margin:0 auto;
+  display:grid !important;
+  grid-template-columns:190px minmax(0,1fr) !important;
+  gap:38px !important;
+  align-items:center !important;
+  padding:34px 0 !important;
+  border-top:1px solid var(--border) !important;
+  border-bottom:1px solid var(--border) !important;
+}
+
+.contact-profile-hero .avatar-hero{
+  width:190px !important;
+  height:190px !important;
+}
+
+.contact-profile-hero .avatar-hero img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  border-radius:50% !important;
+  border:1px solid var(--border) !important;
+}
+
+.contact-profile-hero .avatar-hero .online{
+  width:19px !important;
+  height:19px !important;
+  right:12px !important;
+  bottom:14px !important;
+}
+
+.profile-hero-copy{
+  min-width:0;
+}
+
+.profile-hero-copy .eyebrow{
+  margin-bottom:14px !important;
+}
+
+.profile-hero-name{
+  display:block;
+  margin:0 0 12px;
+  color:var(--text);
+  font-size:clamp(2rem,4vw,3.6rem) !important;
+  line-height:1.02;
+  letter-spacing:-.03em;
+  font-weight:500 !important;
+}
+
+.profile-hero-copy p{
+  max-width:610px;
+  margin:0 !important;
+  color:var(--soft) !important;
+  font-size:1.04rem !important;
+  line-height:1.7 !important;
+}
+
+/* Keep it visually blended with both themes */
+html[data-theme="dark"] .contact-profile-hero,
+html[data-theme="dark"] .profile-hero-card{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+html[data-theme="light"] .contact-profile-hero,
+html[data-theme="light"] .profile-hero-card{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+@media(max-width:720px){
+  .contact-profile-hero{
+    padding:58px 0 46px !important;
+  }
+
+  .contact-profile-hero .profile-hero-card{
+    grid-template-columns:118px minmax(0,1fr) !important;
+    gap:22px !important;
+    padding:26px 0 !important;
+  }
+
+  .contact-profile-hero .avatar-hero{
+    width:118px !important;
+    height:118px !important;
+  }
+
+  .profile-hero-name{
+    font-size:clamp(1.65rem,7vw,2.5rem) !important;
+  }
+
+  .profile-hero-copy p{
+    font-size:.96rem !important;
+    line-height:1.58 !important;
+  }
+}
+
+@media(max-width:500px){
+  .contact-profile-hero .profile-hero-card{
+    grid-template-columns:1fr !important;
+    text-align:center;
+    justify-items:center;
+    gap:18px !important;
+  }
+
+  .contact-profile-hero .avatar-hero{
+    width:132px !important;
+    height:132px !important;
+  }
+
+  .profile-hero-copy .eyebrow{
+    justify-content:center;
+  }
+
+  .profile-hero-copy p{
+    max-width:360px;
+  }
+}
+
+
+
+/* =====================================================
+   CONTACT PROFILE CREDENTIAL + SUBTLE MOTION
+===================================================== */
+.profile-hero-copy{
+  position:relative;
+}
+
+.profile-hero-copy .eyebrow{
+  animation:profileEyebrowIn .55s ease both;
+}
+
+.profile-hero-name{
+  animation:profileNameIn .68s cubic-bezier(.2,.7,.2,1) .08s both;
+}
+
+.profile-credential{
+  width:fit-content;
+  max-width:100%;
+  margin:0 0 16px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:9px;
+  color:var(--soft);
+  font-size:.92rem;
+  line-height:1.4;
+  letter-spacing:.01em;
+  opacity:0;
+  transform:translateY(8px);
+  animation:profileCredentialIn .58s ease .22s forwards;
+}
+
+.credential-dot{
+  width:7px;
+  height:7px;
+  flex:0 0 7px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 10%,transparent);
+  animation:credentialPulse 2.8s ease-in-out 1.1s infinite;
+}
+
+.credential-main{
+  color:var(--text);
+  font-weight:600;
+}
+
+.credential-separator{
+  color:var(--muted);
+}
+
+.credential-place{
+  color:var(--accent);
+  font-style:italic;
+}
+
+.profile-hero-copy > p{
+  opacity:0;
+  transform:translateY(8px);
+  animation:profileDescIn .58s ease .34s forwards;
+}
+
+/* Tiny hover motion, intentionally subtle */
+.profile-hero-card:hover .profile-hero-name{
+  transform:translateX(3px);
+}
+
+.profile-hero-card:hover .profile-credential{
+  transform:translateX(3px);
+}
+
+.profile-hero-name,
+.profile-credential{
+  transition:transform .22s ease;
+}
+
+@keyframes profileEyebrowIn{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes profileNameIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes profileCredentialIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes profileDescIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes credentialPulse{
+  0%,100%{transform:scale(1);opacity:.78}
+  50%{transform:scale(1.18);opacity:1}
+}
+
+/* Dark / light mode treatment */
+html[data-theme="dark"] .credential-dot{
+  background:#B5A07E;
+  box-shadow:0 0 0 5px rgba(181,160,126,.08);
+}
+
+html[data-theme="dark"] .credential-place{
+  color:#B9A889;
+}
+
+html[data-theme="light"] .credential-dot{
+  background:#806A58;
+  box-shadow:0 0 0 5px rgba(128,106,88,.08);
+}
+
+html[data-theme="light"] .credential-place{
+  color:#755F4E;
+}
+
+@media(max-width:500px){
+  .profile-credential{
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:.88rem;
+    gap:7px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .profile-hero-copy .eyebrow,
+  .profile-hero-name,
+  .profile-credential,
+  .profile-hero-copy > p,
+  .credential-dot{
+    animation:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
+
+
+/* =====================================================
+   CONTACT — OPEN TO CONVERSATIONS
+   Replaces the redundant email form with useful context.
+===================================================== */
+.contact-topics-section{
+  padding-top:82px !important;
+}
+.contact-topics-head{
+  display:grid;
+  grid-template-columns:.42fr 1fr;
+  gap:50px;
+  align-items:start;
+  margin-bottom:52px;
+}
+.contact-topics-head h2{
+  max-width:760px;
+  margin:0;
+}
+.contact-topics{
+  border-top:1px solid var(--border);
+}
+.contact-topic{
+  display:grid;
+  grid-template-columns:70px minmax(220px,.65fr) minmax(0,1.35fr);
+  gap:28px;
+  align-items:start;
+  padding:27px 0;
+  border-bottom:1px solid var(--border);
+  transition:padding-left .22s ease;
+}
+.contact-topic:hover{padding-left:7px}
+.topic-index{
+  color:var(--muted);
+  font-size:.8rem;
+  letter-spacing:.08em;
+}
+.contact-topic strong{
+  color:var(--text);
+  font-size:1.28rem;
+  font-weight:500;
+}
+.contact-topic p{
+  max-width:690px;
+  margin:0;
+  color:var(--soft);
+  line-height:1.65;
+}
+.contact-fast-note{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-top:28px;
+  color:var(--soft);
+  font-size:.94rem;
+}
+.fast-note-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent);
+  animation:contactFastPulse 2.8s ease-in-out infinite;
+}
+@keyframes contactFastPulse{
+  0%,100%{transform:scale(1);opacity:.7}
+  50%{transform:scale(1.17);opacity:1}
+}
+@media(max-width:850px){
+  .contact-topics-head{grid-template-columns:1fr;gap:18px}
+  .contact-topic{grid-template-columns:48px 1fr}
+  .contact-topic p{grid-column:2}
+}
+@media(max-width:560px){
+  .contact-topics-section{padding-top:62px !important}
+  .contact-topic{grid-template-columns:36px 1fr;gap:16px;padding:22px 0}
+  .contact-topic strong{font-size:1.14rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .fast-note-dot{animation:none !important}
+}
+
+</style>
+<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="logo.png" alt="TNL logo"><span>TNL</span></a>
+    <nav class="nav-links"><a href="index.html#work" class="">Work</a><a href="about.html" class="">About</a><a href="index.html#skills" class="">Skills</a><a href="journey.html" class="">Journey</a><a href="contact.html" class="active">Contact</a></nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="soundBtn" type="button" aria-label="Toggle sound"><i class="fa-solid fa-volume-low"></i></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme"><i class="fa-regular fa-sun"></i></button>
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language" style="width:auto;padding:0 12px;border-radius:999px">中文</button>
+      <button class="icon-btn mobile-btn" id="mobileBtn" type="button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="index.html#skills">Skills</a><a href="journey.html">Journey</a><a href="contact.html">Contact</a></div>
+</header>
+
+<main>
+<section class="hero contact-hero contact-profile-hero">
+ <div class="container">
+   <div class="profile profile-hero-card reveal">
+     <div class="avatar avatar-hero">
+       <img src="Profile Github.png" alt="Timothy Nathaniel Laurencio">
+       <span class="online" aria-label="Available"></span>
+     </div>
+     <div class="profile-hero-copy">
+       <div class="eyebrow" data-en="Contact" data-zh="联系">Contact</div>
+       <strong class="profile-hero-name">Timothy Nathaniel Laurencio</strong>
+
+       <div class="profile-credential" aria-label="Academic credential">
+         <span class="credential-dot"></span>
+         <span class="credential-main"
+           data-en="B.Eng. in Computer Science and Technology"
+           data-zh="计算机科学与技术 工学学士">
+           B.Eng. in Computer Science and Technology
+         </span>
+         <span class="credential-separator">·</span>
+         <span class="credential-place"
+           data-en="Nanjing, China"
+           data-zh="中国 · 南京">
+           Nanjing, China
+         </span>
+       </div>
+
+       <p data-en="Software Engineer and Computer Science graduate from Nanjing Tech University. Usually easiest to reach by WhatsApp or email." data-zh="软件工程师，毕业于南京工业大学计算机科学与技术专业。通常通过 WhatsApp 或电子邮件最容易联系到我。">Software Engineer and Computer Science graduate from Nanjing Tech University. Usually easiest to reach by WhatsApp or email.</p>
+     </div>
+   </div>
+ </div>
+</section>
+
+<section class="section" style="padding-top:26px">
+ <div class="container contact-list reveal">
+   <div class="contact-row">
+     <a class="contact-main" href="https://wa.me/6285286289012" target="_blank" rel="noopener"><span class="contact-icon"><i class="fa-brands fa-whatsapp"></i></span><strong>WhatsApp</strong><span class="desc" data-en="Open a WhatsApp chat" data-zh="打开 WhatsApp 聊天">Open a WhatsApp chat</span></a>
+     <button class="copy-btn" type="button" data-copy="+6285286289012" data-type="phone"><i class="fa-regular fa-copy"></i><span data-en="Copy" data-zh="复制">Copy</span></button>
+   </div>
+   <div class="contact-row">
+     <a class="contact-main" href="https://www.instagram.com/timothynathaniellaurencio/" target="_blank" rel="noopener"><span class="contact-icon"><i class="fa-brands fa-instagram"></i></span><strong>Instagram</strong><span class="desc" data-en="Photos, travel, and everyday life" data-zh="照片、旅行和日常生活">Photos, travel, and everyday life</span></a>
+     <button class="copy-btn" type="button" data-copy="https://www.instagram.com/timothynathaniellaurencio/" data-type="link"><i class="fa-regular fa-copy"></i><span data-en="Copy" data-zh="复制">Copy</span></button>
+   </div>
+   <div class="contact-row">
+     <a class="contact-main" href="mailto:timothynathaniellaurencio@gmail.com"><span class="contact-icon"><i class="fa-regular fa-envelope"></i></span><strong>Email</strong><span class="desc" data-en="Send me an email" data-zh="给我发邮件">Send me an email</span></a>
+     <button class="copy-btn" type="button" data-copy="timothynathaniellaurencio@gmail.com" data-type="email"><i class="fa-regular fa-copy"></i><span data-en="Copy" data-zh="复制">Copy</span></button>
+   </div>
+   <div class="contact-row">
+     <a class="contact-main" href="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" target="_blank" rel="noopener"><span class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></span><strong>LinkedIn</strong><span class="desc" data-en="Work and professional updates" data-zh="工作与职业动态">Work and professional updates</span></a>
+     <button class="copy-btn" type="button" data-copy="https://www.linkedin.com/in/timothy-nathaniel-laurencio-727005413" data-type="link"><i class="fa-regular fa-copy"></i><span data-en="Copy" data-zh="复制">Copy</span></button>
+   </div>
+   <div class="contact-row">
+     <a class="contact-main" href="https://github.com/Timothy1016" target="_blank" rel="noopener"><span class="contact-icon"><i class="fa-brands fa-github"></i></span><strong>GitHub</strong><span class="desc" data-en="Code, projects, and experiments" data-zh="代码、项目和实验">Code, projects, and experiments</span></a>
+     <button class="copy-btn" type="button" data-copy="https://github.com/Timothy1016" data-type="link"><i class="fa-regular fa-copy"></i><span data-en="Copy" data-zh="复制">Copy</span></button>
+   </div>
+ </div>
+</section>
+
+<section class="section contact-topics-section">
+ <div class="container">
+   <div class="contact-topics-head reveal">
+     <div class="eyebrow" data-en="Open to conversations about" data-zh="欢迎交流">Open to conversations about</div>
+     <h2 data-en="A few things I’m always happy to talk about." data-zh="这些话题，我一直很乐意聊。">A few things I’m always happy to talk about.</h2>
+   </div>
+
+   <div class="contact-topics reveal" aria-label="Topics Timothy is open to discussing">
+     <div class="contact-topic">
+       <span class="topic-index">01</span>
+       <strong data-en="Software Engineering" data-zh="软件工程">Software Engineering</strong>
+       <p data-en="Projects, product ideas, full-stack work, and building something useful together." data-zh="项目、产品想法、全栈开发，以及一起做真正有用的东西。">Projects, product ideas, full-stack work, and building something useful together.</p>
+     </div>
+     <div class="contact-topic">
+       <span class="topic-index">02</span>
+       <strong data-en="AI & Automation" data-zh="人工智能与自动化">AI & Automation</strong>
+       <p data-en="Practical AI, LLM workflows, automation, and experiments that make everyday work simpler." data-zh="实用 AI、LLM 工作流、自动化，以及让日常工作更简单的实验。">Practical AI, LLM workflows, automation, and experiments that make everyday work simpler.</p>
+     </div>
+     <div class="contact-topic">
+       <span class="topic-index">03</span>
+       <strong data-en="Graduate Study & Research" data-zh="研究生学习与研究">Graduate Study & Research</strong>
+       <p data-en="Master’s opportunities, research directions, academic collaboration, and learning from people doing serious work." data-zh="硕士机会、研究方向、学术合作，以及向认真做研究的人学习。">Master’s opportunities, research directions, academic collaboration, and learning from people doing serious work.</p>
+     </div>
+     <div class="contact-topic">
+       <span class="topic-index">04</span>
+       <strong data-en="Career & Collaboration" data-zh="职业与合作">Career & Collaboration</strong>
+       <p data-en="Software roles, technology-related opportunities, collaboration, networking, or simply exchanging ideas." data-zh="软件岗位、科技相关机会、合作、人脉交流，或只是交换想法。">Software roles, technology-related opportunities, collaboration, networking, or simply exchanging ideas.</p>
+     </div>
+   </div>
+
+   <div class="contact-fast-note reveal">
+     <span class="fast-note-dot" aria-hidden="true"></span>
+     <span data-en="Usually replies fastest on WhatsApp or email." data-zh="通常通过 WhatsApp 或电子邮件回复最快。">Usually replies fastest on WhatsApp or email.</span>
+   </div>
+ </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Timothy Nathaniel Laurencio. All rights reserved.</span>
+    <a href="#top" data-en="Back to top ↑" data-zh="返回顶部 ↑">Back to top ↑</a>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+
+const THEME_KEY='portfolio-theme';
+const LANG_KEY='portfolio-language';
+const SOUND_KEY='portfolio-sound';
+
+function currentTheme(){return document.documentElement.dataset.theme||'dark'}
+function applyTheme(theme){
+  const t=theme==='light'?'light':'dark';
+  document.documentElement.dataset.theme=t;
+  document.body.classList.toggle('dark',t==='dark');
+  localStorage.setItem(THEME_KEY,t);
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta)meta.setAttribute('content',t==='dark'?'#000000':'#EDE3D3');
+  const icon=document.querySelector('#themeBtn i');
+  if(icon)icon.className=t==='dark'?'fa-regular fa-sun':'fa-regular fa-moon';
+}
+function toggleTheme(){applyTheme(currentTheme()==='dark'?'light':'dark')}
+
+let currentLanguage=localStorage.getItem(LANG_KEY)||'en';
+function applyLanguage(lang){
+  currentLanguage=lang==='zh'?'zh':'en';
+  localStorage.setItem(LANG_KEY,currentLanguage);
+  document.documentElement.lang=currentLanguage==='zh'?'zh-CN':'en';
+  document.querySelectorAll('[data-en][data-zh]').forEach(el=>{
+    el.textContent=el.dataset[currentLanguage];
+  });
+  const btn=document.getElementById('langBtn');
+  if(btn)btn.textContent=currentLanguage==='en'?'中文':'EN';
+}
+
+let soundOn=localStorage.getItem(SOUND_KEY)!=='off';
+function clickSound(freq=520){
+  if(!soundOn)return;
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.frequency.value=freq;osc.type='sine';
+    gain.gain.setValueAtTime(.025,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.07);
+    osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.08);
+  }catch(e){}
+}
+function toggleSound(){
+  soundOn=!soundOn;
+  localStorage.setItem(SOUND_KEY,soundOn?'on':'off');
+  const i=document.querySelector('#soundBtn i');
+  if(i)i.className=soundOn?'fa-solid fa-volume-low':'fa-solid fa-volume-xmark';
+}
+
+function showToast(message){
+  const t=document.getElementById('toast');
+  if(!t)return;
+  t.textContent=message;t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer=setTimeout(()=>t.classList.remove('show'),1500);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  applyTheme(localStorage.getItem(THEME_KEY)||'dark');
+  applyLanguage(currentLanguage);
+  const si=document.querySelector('#soundBtn i');
+  if(si)si.className=soundOn?'fa-solid fa-volume-low':'fa-solid fa-volume-xmark';
+
+  document.getElementById('themeBtn')?.addEventListener('click',()=>{toggleTheme();clickSound(610)});
+  document.getElementById('soundBtn')?.addEventListener('click',toggleSound);
+  document.getElementById('langBtn')?.addEventListener('click',()=>applyLanguage(currentLanguage==='en'?'zh':'en'));
+  document.getElementById('mobileBtn')?.addEventListener('click',()=>{
+    document.getElementById('mobileMenu')?.classList.toggle('open');
+  });
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+});
+
+async function copyValue(btn){
+  const value=btn.dataset.copy||'';
+  let ok=false;
+  try{
+    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);ok=true}
+  }catch(e){}
+  if(!ok){
+    const ta=document.createElement('textarea');ta.value=value;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{ok=document.execCommand('copy')}catch(e){}
+    ta.remove();
+  }
+  if(!ok)return showToast(currentLanguage==='zh'?'复制失败':'Could not copy');
+  btn.classList.add('copied');
+  const icon=btn.querySelector('i'),label=btn.querySelector('span');
+  if(icon)icon.className='fa-solid fa-check';
+  if(label)label.textContent=currentLanguage==='zh'?'已复制':'Copied';
+  const type=btn.dataset.type;
+  const msg=currentLanguage==='zh'?(type==='phone'?'号码已复制':type==='email'?'邮箱已复制':'链接已复制'):(type==='phone'?'Phone number copied':type==='email'?'Email copied':'Link copied');
+  showToast(msg);clickSound(720);
+  setTimeout(()=>{btn.classList.remove('copied');if(icon)icon.className='fa-regular fa-copy';if(label)label.textContent=currentLanguage==='zh'?'复制':'Copy'},1300);
+}
+document.querySelectorAll('.copy-btn').forEach(btn=>btn.addEventListener('click',()=>copyValue(btn)));
+document.getElementById('contactForm')?.addEventListener('submit',e=>{
+  e.preventDefault();
+  const subject=encodeURIComponent(document.getElementById('topic').value||'Portfolio contact');
+  const body=encodeURIComponent(
+`Name: ${document.getElementById('name').value}
+Email: ${document.getElementById('email').value}
+Timeline: ${document.getElementById('timeline').value}
+
+${document.getElementById('message').value}`
+  );
+  location.href=`mailto:timothynathaniellaurencio@gmail.com?subject=${subject}&body=${body}`;
+});
+</script>
+</body></html>

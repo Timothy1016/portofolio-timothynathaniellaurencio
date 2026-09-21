@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#000000">
+<title>Journey Globe</title>
+<script src="https://unpkg.com/globe.gl"></script>
+<style>
+:root{
+  --bg:#000;
+  --surface:#080808;
+  --surface2:#111;
+  --text:#F1EEE8;
+  --soft:#C3BDB4;
+  --muted:#8D867E;
+  --border:rgba(255,255,255,.10);
+  --accent:#A58D78;
+  --accent2:#B5A07E;
+  --olive:#858778;
+}
+html[data-theme="light"]{
+  --bg:#EDE3D3;
+  --surface:#F7F0E5;
+  --surface2:#E9DECE;
+  --text:#241F1A;
+  --soft:#5F564D;
+  --muted:#756A60;
+  --border:rgba(36,31,26,.14);
+  --accent:#806A58;
+  --accent2:#927B61;
+  --olive:#6F7565;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:"Times New Roman",Times,serif}
+body{overflow-x:hidden}
+.shell{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.58fr);min-height:620px}
+.globe-side{position:relative;min-height:620px;border-right:1px solid var(--border);background:var(--bg)}
+#globe{position:absolute;inset:0}
+.hud{
+  position:absolute;left:18px;top:18px;z-index:10;
+  padding:10px 12px;border:1px solid var(--border);background:color-mix(in srgb,var(--surface) 90%,transparent);
+  font-size:.76rem;color:var(--soft)
+}
+.hud strong{display:block;color:var(--text);font-weight:500}
+.info{padding:28px 24px;display:flex;flex-direction:column;gap:20px;background:var(--surface)}
+.city-code{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.city-name{font-size:clamp(2rem,4vw,3.4rem);line-height:.95;margin:0;font-weight:500}
+.city-country{color:var(--muted)}
+.city-copy{color:var(--soft);line-height:1.65}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.photo{aspect-ratio:4/3;background:var(--surface2);border:1px solid var(--border);overflow:hidden}
+.photo:first-child{grid-column:1/-1;aspect-ratio:16/8}
+.photo img{width:100%;height:100%;object-fit:cover}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn{
+  min-height:40px;padding:0 14px;border:1px solid var(--border);border-radius:999px;
+  background:transparent;color:var(--text);cursor:pointer
+}
+.btn:hover{border-color:var(--accent)}
+.city-strip-wrap{padding:12px;border-top:1px solid var(--border);background:var(--surface)}
+.city-strip{
+  display:flex;gap:8px;overflow:auto;scrollbar-width:none
+}
+.city-strip::-webkit-scrollbar{display:none}
+.city-pill{
+  flex:0 0 auto;border:1px solid var(--border);background:transparent;color:var(--soft);
+  border-radius:999px;padding:8px 12px;cursor:pointer;white-space:nowrap
+}
+.city-pill.active{background:var(--surface2);color:var(--text);border-color:color-mix(in srgb,var(--accent) 45%,var(--border))}
+.arrival{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);
+  z-index:15;padding:13px 16px;border:1px solid var(--border);background:var(--surface);
+  opacity:0;pointer-events:none;transition:.2s ease
+}
+.arrival.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media(max-width:850px){
+ .shell{grid-template-columns:1fr}
+ .globe-side{min-height:430px;border-right:0;border-bottom:1px solid var(--border)}
+}
+
+
+/* FINAL GLOBE THEME AUDIT */
+html[data-theme="dark"],
+html[data-theme="dark"] body{
+  --bg:#000000 !important;
+  --surface:#080808 !important;
+  --surface2:#111111 !important;
+  --text:#F2EEE8 !important;
+  --soft:#C8C1B8 !important;
+  --muted:#918A82 !important;
+  --border:rgba(255,255,255,.10) !important;
+  background:#000000 !important;
+  color:#F2EEE8 !important;
+}
+html[data-theme="dark"] .globe-side{
+  background:#000000 !important;
+}
+html[data-theme="dark"] .info,
+html[data-theme="dark"] .city-strip-wrap{
+  background:#080808 !important;
+  box-shadow:none !important;
+}
+html[data-theme="light"],
+html[data-theme="light"] body{
+  --bg:#EDE3D3 !important;
+  --surface:#F7F0E5 !important;
+  --surface2:#E9DECE !important;
+  --text:#241F1A !important;
+  --soft:#5F564D !important;
+  --muted:#756A60 !important;
+  --border:rgba(36,31,26,.14) !important;
+  background:#EDE3D3 !important;
+  color:#241F1A !important;
+}
+
+
+
+html[data-theme="light"] .info,html[data-theme="light"] .city-strip-wrap{background:#e8dccb!important}
+html[data-theme="dark"] .info,html[data-theme="dark"] .city-strip-wrap{background:#080808!important}
+html[data-theme="light"] .city-pill{background:#e1d3bf!important;color:#4f463e!important}
+html[data-theme="dark"] .city-pill{background:#0d0d0d!important;color:#c8c1b8!important}
+
+
+.globe-copyright{margin-top:auto;padding-top:14px;border-top:1px solid var(--border);color:var(--muted);font-size:.72rem;line-height:1.45}
+</style>
+<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+</head>
+<body>
+<div class="shell">
+  <div class="globe-side">
+    <div id="globe"></div>
+    <div class="hud"><strong id="routeText">Route 01 / 16</strong><span>Drag the globe · click a city</span></div>
+    <div class="arrival" id="arrival">Arrived</div>
+  </div>
+  <aside class="info">
+    <div>
+      <div class="city-code" id="cityCode">ID · 01</div>
+      <h1 class="city-name" id="cityName">Singkawang</h1>
+      <div class="city-country" id="cityCountry">Indonesia</div>
+    </div>
+    <p class="city-copy" id="cityCopy">Home. The place the rest of the map keeps pointing back to.</p>
+    <div class="photos" id="photos"></div>
+    <div class="controls">
+      <button class="btn" id="prevBtn">← Previous</button>
+      <button class="btn" id="nextBtn">Next city →</button>
+    </div>
+  <div class="globe-copyright">© 2026 Timothy Nathaniel Laurencio. All rights reserved.</div>
+</aside>
+</div>
+<div class="city-strip-wrap"><div class="city-strip" id="cityStrip"></div></div>
+
+<script>
+const cities=[
+ {name:'Singkawang',country:'Indonesia',lat:.906,long:108.987,slug:'singkawang',copy:'Home. The place the rest of the map keeps pointing back to.'},
+ {name:'Pontianak',country:'Indonesia',lat:-.026,long:109.342,slug:'pontianak',copy:'A familiar stop in West Kalimantan and part of the route I grew up around.'},
+ {name:'Kuching',country:'Malaysia',lat:1.553,long:110.359,slug:'kuching',copy:'Close enough to feel familiar, different enough to make the trip memorable.'},
+ {name:'Kuala Lumpur',country:'Malaysia',lat:3.139,long:101.687,slug:'kuala-lumpur',copy:'A city I remember for its pace, scale, and the feeling of being in transit.'},
+ {name:'Bangkok',country:'Thailand',lat:13.756,long:100.501,slug:'bangkok',copy:'Busy, warm, and full of small details that stayed with me after the trip.'},
+ {name:'Jakarta',country:'Indonesia',lat:-6.208,long:106.845,slug:'jakarta',copy:'A city that keeps appearing in different chapters of work, family, and travel.'},
+ {name:'Bandung',country:'Indonesia',lat:-6.917,long:107.619,slug:'bandung',copy:'Cooler air, slower moments, and a city that feels different from Jakarta immediately.'},
+ {name:'Bogor',country:'Indonesia',lat:-6.595,long:106.817,slug:'bogor',copy:'Green, rainy, and a useful pause from larger cities.'},
+ {name:'Nanjing',country:'China',lat:32.060,long:118.796,slug:'nanjing',copy:'University, routines, friendships, faith, and a large part of my adult life.'},
+ {name:'Shanghai',country:'China',lat:31.230,long:121.474,slug:'shanghai',copy:'A city that always feels one scale larger than expected.'},
+ {name:'Suzhou',country:'China',lat:31.299,long:120.585,slug:'suzhou',copy:'Water, gardens, old streets, and a different rhythm close to Nanjing.'},
+ {name:'Hangzhou',country:'China',lat:30.274,long:120.155,slug:'hangzhou',copy:'A place where technology, history, and scenery sit unusually close together.'},
+ {name:'Yangzhou',country:'China',lat:32.394,long:119.412,slug:'yangzhou',copy:'A quieter trip, which is probably why I remember the details.'},
+ {name:'Xiamen',country:'China',lat:24.479,long:118.089,slug:'xiamen',copy:'Sea air, warmer weather, and a very different side of China.'},
+ {name:'Shenzhen',country:'China',lat:22.543,long:114.057,slug:'shenzhen',copy:'Fast, modern, and closely tied to the technology world I was studying.'},
+ {name:'Hong Kong',country:'China',lat:22.319,long:114.169,slug:'hong-kong',copy:'Dense, vertical, energetic, and visually difficult to forget.'}
+];
+
+let index=0, timer=null, globe;
+
+function theme(){return document.documentElement.dataset.theme||localStorage.getItem('portfolio-theme')||'dark'}
+function applyTheme(t){
+ document.documentElement.dataset.theme=t==='light'?'light':'dark';
+ if(globe){
+   globe.backgroundColor(t==='light'?'#EDE3D3':'#000000');
+   globe.atmosphereColor(t==='light'?'#927B61':'#A58D78');
+ }
+}
+applyTheme(theme());
+
+function pointColor(){return theme()==='light'?'#806A58':'#B5A07E'}
+function arcColor(){return theme()==='light'?['rgba(128,106,88,.26)','rgba(146,123,97,.78)']:['rgba(165,141,120,.18)','rgba(181,160,126,.72)']}
+
+function makeArcs(active){
+ const arr=[];
+ for(let i=0;i<active;i++){
+   arr.push({startLat:cities[i].lat,startLng:cities[i].long,endLat:cities[i+1].lat,endLng:cities[i+1].long});
+ }
+ return arr;
+}
+
+function initGlobe(){
+ const el=document.getElementById('globe');
+ globe=Globe()(el)
+   .backgroundColor(theme()==='light'?'#EDE3D3':'#000000')
+   .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+   .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+   .showAtmosphere(true)
+   .atmosphereColor(theme()==='light'?'#927B61':'#A58D78')
+   .atmosphereAltitude(.14)
+   .pointsData(cities)
+   .pointLat('lat').pointLng('long')
+   .pointAltitude(.02)
+   .pointRadius(d=>d===cities[index]?.04:.025)
+   .pointColor(()=>pointColor())
+   .labelsData(cities)
+   .labelLat('lat').labelLng('long')
+   .labelText('name')
+   .labelSize(.55)
+   .labelDotRadius(.18)
+   .labelColor(()=>theme()==='light'?'#382F28':'#F1EEE8')
+   .labelResolution(2)
+   .onPointClick(d=>selectCity(cities.indexOf(d),true))
+   .onLabelClick(d=>selectCity(cities.indexOf(d),true))
+   .arcsData([])
+   .arcStartLat('startLat').arcStartLng('startLng')
+   .arcEndLat('endLat').arcEndLng('endLng')
+   .arcColor(()=>arcColor())
+   .arcDashLength(.45).arcDashGap(.25).arcDashAnimateTime(1900)
+   .arcStroke(.5);
+
+ const controls=globe.controls();
+ controls.autoRotate=true;
+ controls.autoRotateSpeed=.35;
+ controls.enableDamping=true;
+ resize();
+ window.addEventListener('resize',resize);
+ selectCity(0,false);
+}
+function resize(){
+ const side=document.querySelector('.globe-side');
+ if(globe&&side)globe.width(side.clientWidth).height(side.clientHeight);
+}
+function buildStrip(){
+ const strip=document.getElementById('cityStrip');
+ cities.forEach((c,i)=>{
+   const b=document.createElement('button');
+   b.className='city-pill';b.textContent=c.name;
+   b.addEventListener('click',()=>selectCity(i,true));
+   strip.appendChild(b);
+ });
+}
+function photosFor(c){
+ const holder=document.getElementById('photos');holder.innerHTML='';
+ [1,2,3].forEach(n=>{
+   const div=document.createElement('div');div.className='photo';
+   const img=document.createElement('img');
+   img.src=`travel/${c.slug}/${n}.jpg`;img.alt=`${c.name} ${n}`;
+   img.onerror=()=>{div.innerHTML='<div style="height:100%;display:grid;place-items:center;color:var(--muted);font-size:.82rem">Photo</div>'};
+   div.appendChild(img);holder.appendChild(div);
+ });
+}
+function selectCity(i,manual){
+ index=(i+cities.length)%cities.length;
+ const c=cities[index];
+ document.getElementById('cityCode').textContent=`${c.country==='China'?'CN':c.country==='Malaysia'?'MY':c.country==='Thailand'?'TH':'ID'} · ${String(index+1).padStart(2,'0')}`;
+ document.getElementById('cityName').textContent=c.name;
+ document.getElementById('cityCountry').textContent=c.country;
+ document.getElementById('cityCopy').textContent=c.copy;
+ document.getElementById('routeText').textContent=`Route ${String(index+1).padStart(2,'0')} / ${cities.length}`;
+ photosFor(c);
+ document.querySelectorAll('.city-pill').forEach((b,j)=>b.classList.toggle('active',j===index));
+ const strip=document.getElementById('cityStrip'),active=strip.children[index];
+ if(active){
+   const left=active.offsetLeft-(strip.clientWidth/2)+(active.clientWidth/2);
+   strip.scrollTo({left:Math.max(0,left),behavior:'smooth'});
+ }
+ globe.pointsData([...cities]);
+ globe.arcsData(makeArcs(index));
+ globe.pointOfView({lat:c.lat,lng:c.long,altitude:1.65},900);
+ if(manual){
+   const a=document.getElementById('arrival');a.textContent=`Arrived · ${c.name}`;a.classList.add('show');
+   setTimeout(()=>a.classList.remove('show'),900);
+   restartAuto();
+ }
+}
+function restartAuto(){
+ clearInterval(timer);
+ timer=setInterval(()=>selectCity(index+1,false),7000);
+}
+document.getElementById('prevBtn').addEventListener('click',()=>selectCity(index-1,true));
+document.getElementById('nextBtn').addEventListener('click',()=>selectCity(index+1,true));
+window.addEventListener('message',e=>{if(e.data?.type==='tnl-theme')applyTheme(e.data.theme)});
+window.addEventListener('storage',e=>{if(e.key==='portfolio-theme')applyTheme(e.newValue||'dark')});
+buildStrip();initGlobe();restartAuto();
+</script>
+</body></html>

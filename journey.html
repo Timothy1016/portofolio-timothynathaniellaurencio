@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<title>Journey — Timothy Nathaniel Laurencio</title>
+<meta name="description" content="Timothy Nathaniel Laurencio's journey, timeline, places, and experiences.">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#000000;
+  --surface:#090909;
+  --surface-2:#111111;
+  --text:#F1EEE8;
+  --soft:#C3BDB4;
+  --muted:#8D867E;
+  --border:rgba(255,255,255,.10);
+  --accent:#A58D78;
+  --accent-2:#B5A07E;
+  --olive:#858778;
+  --header:rgba(0,0,0,.96);
+}
+
+html[data-theme="light"]{
+  --bg:#EDE3D3;
+  --surface:#F7F0E5;
+  --surface-2:#E9DECE;
+  --text:#241F1A;
+  --soft:#5F564D;
+  --muted:#756A60;
+  --border:rgba(36,31,26,.14);
+  --accent:#806A58;
+  --accent-2:#927B61;
+  --olive:#6F7565;
+  --header:rgba(237,227,211,.95);
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Times New Roman",Times,serif;
+  transition:background .2s ease,color .2s ease;
+}
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+header{
+  position:sticky;top:0;z-index:1000;
+  background:var(--header);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.nav{
+  min-height:68px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;object-fit:contain}
+.brand span{font-size:.95rem;letter-spacing:.05em}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{
+  position:relative;text-decoration:none;color:var(--soft);
+  font-size:.92rem;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;
+  background:var(--accent);transition:width .18s ease;
+}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-tools{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:38px;height:38px;border:1px solid var(--border);border-radius:50%;
+  background:transparent;color:var(--text);cursor:pointer;
+}
+.icon-btn:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--border))}
+.mobile-btn{display:none}
+.mobile-menu{display:none}
+main{overflow:hidden}
+.hero{
+  padding:110px 0 86px;
+  border-bottom:1px solid var(--border);
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:24px;color:var(--accent);
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent-2)}
+h1,h2,h3,p{margin-top:0}
+h1{
+  max-width:1000px;margin-bottom:26px;
+  font-size:clamp(3.3rem,7.3vw,7.4rem);
+  line-height:.92;letter-spacing:-.045em;font-weight:500;
+}
+h2{
+  font-size:clamp(2.25rem,4.2vw,4.35rem);
+  line-height:.98;letter-spacing:-.035em;font-weight:500;
+}
+p{color:var(--soft);line-height:1.72;font-size:1.03rem}
+.section{padding:96px 0;border-bottom:1px solid var(--border)}
+.section-head{
+  display:grid;grid-template-columns:.42fr 1fr;gap:50px;
+  align-items:start;margin-bottom:54px;
+}
+.section-copy{max-width:690px}
+.button{
+  min-height:44px;padding:0 18px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  border:1px solid var(--border);border-radius:999px;
+  text-decoration:none;transition:.18s ease;
+}
+.button.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.button.secondary{background:transparent;color:var(--text)}
+.button:hover{transform:translateY(-1px)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+footer{padding:34px 0;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;font-size:.88rem}
+.toast{
+  position:fixed;right:18px;bottom:18px;z-index:5000;
+  padding:11px 14px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);border-radius:10px;
+  opacity:0;transform:translateY(8px);pointer-events:none;transition:.18s ease;
+}
+.toast.show{opacity:1;transform:none}
+@media(max-width:850px){
+  .nav-links{display:none}
+  .mobile-btn{display:inline-grid;place-items:center}
+  .mobile-menu{
+    padding:14px 20px 18px;border-top:1px solid var(--border);
+    background:var(--header)
+  }
+  .mobile-menu.open{display:grid;gap:14px}
+  .mobile-menu a{text-decoration:none;color:var(--soft)}
+  .section-head{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:600px){
+  .container{width:min(100% - 24px,1180px)}
+  .hero{padding:78px 0 62px}
+  .section{padding:70px 0}
+  h1{font-size:clamp(2.85rem,16vw,4.5rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+.journey-hero-grid{display:grid;grid-template-columns:1fr .82fr;gap:60px;align-items:center}
+.campus-card{position:relative}
+.campus-card img.hero-campus{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border)}
+.school-badge{
+  position:absolute;left:18px;bottom:18px;right:18px;
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;border:1px solid var(--border);
+  background:color-mix(in srgb,var(--surface) 90%,transparent);
+}
+.school-badge img{width:42px;height:42px;object-fit:contain}
+.school-badge strong{display:block;font-weight:500}
+.school-badge span{color:var(--muted);font-size:.84rem}
+.timeline{position:relative;margin-top:20px}
+.timeline::before{content:"";position:absolute;left:12px;top:10px;bottom:10px;width:1px;background:var(--border)}
+.timeline-item{position:relative;padding:0 0 52px 54px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-dot{
+  position:absolute;left:5px;top:8px;width:15px;height:15px;border-radius:50%;
+  border:1px solid var(--accent);background:var(--bg)
+}
+.timeline-year{color:var(--accent);font-size:.84rem;letter-spacing:.08em;text-transform:uppercase}
+.timeline-item h3{font-size:1.9rem;font-weight:500;margin:7px 0 10px}
+.places-head{display:grid;grid-template-columns:.55fr 1fr;gap:46px;align-items:start}
+.faith-note{
+  margin-top:24px;padding:18px 0;border-top:1px solid var(--border);
+  color:var(--soft);font-style:italic
+}
+.globe-wrap{
+  margin-top:38px;border:1px solid var(--border);background:var(--surface);
+  min-height:620px;overflow:hidden
+}
+.globe-wrap iframe{width:100%;height:620px;border:0;display:block}
+.journey-cta{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+@media(max-width:850px){
+ .journey-hero-grid,.places-head,.journey-cta{grid-template-columns:1fr}
+ .globe-wrap,.globe-wrap iframe{min-height:720px;height:720px}
+}
+
+
+/* =====================================================================
+   FINAL SITE-WIDE THEME AUDIT
+   Dark = pure black / charcoal with no page-level glow.
+   Light = soft beige.
+   ===================================================================== */
+html[data-theme="dark"],
+html[data-theme="dark"] body{
+  --bg:#000000 !important;
+  --surface:#090909 !important;
+  --surface-2:#111111 !important;
+  --text:#F2EEE8 !important;
+  --soft:#C8C1B8 !important;
+  --muted:#918A82 !important;
+  --border:rgba(255,255,255,.10) !important;
+  --header:rgba(0,0,0,.97) !important;
+  background:#000000 !important;
+  color:#F2EEE8 !important;
+}
+
+html[data-theme="dark"] main,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] footer{
+  background:#000000 !important;
+}
+
+html[data-theme="dark"] header{
+  background:rgba(0,0,0,.97) !important;
+  box-shadow:none !important;
+}
+
+html[data-theme="dark"] .button,
+html[data-theme="dark"] .icon-btn{
+  box-shadow:none !important;
+}
+
+html[data-theme="light"],
+html[data-theme="light"] body{
+  --bg:#EDE3D3 !important;
+  --surface:#F7F0E5 !important;
+  --surface-2:#E9DECE !important;
+  --text:#241F1A !important;
+  --soft:#5F564D !important;
+  --muted:#756A60 !important;
+  --border:rgba(36,31,26,.14) !important;
+  --header:rgba(237,227,211,.96) !important;
+  background:#EDE3D3 !important;
+  color:#241F1A !important;
+}
+
+
+
+/* FINAL BLACK / BEIGE BLEND */
+html[data-theme="dark"],html[data-theme="dark"] body{
+  --bg:#000!important;--surface:#090909!important;--surface-2:#111!important;--text:#f2eee8!important;--soft:#c8c1b8!important;--muted:#918a82!important;--border:rgba(255,255,255,.10)!important;
+  background:#000!important;color:#f2eee8!important;
+}
+html[data-theme="light"],html[data-theme="light"] body{
+  --bg:#ede3d3!important;--surface:#f4ecdf!important;--surface-2:#e5d9c7!important;--text:#241f1a!important;--soft:#5f564d!important;--muted:#756a60!important;--border:rgba(36,31,26,.14)!important;
+  background:#ede3d3!important;color:#241f1a!important;
+}
+html[data-theme="dark"] main,html[data-theme="dark"] .hero,html[data-theme="dark"] .section,html[data-theme="dark"] footer{background:#000!important}
+html[data-theme="light"] main,html[data-theme="light"] .hero,html[data-theme="light"] .section,html[data-theme="light"] footer{background:#ede3d3!important}
+.section,.hero{box-shadow:none!important}
+
+
+
+html[data-theme="light"] .timeline-item,html[data-theme="light"] .timeline{background:transparent!important}
+html[data-theme="dark"] .timeline-item,html[data-theme="dark"] .timeline{background:transparent!important}
+html[data-theme="light"] .globe-wrap{background:#e6dac8!important;border-color:rgba(36,31,26,.12)!important}
+html[data-theme="dark"] .globe-wrap{background:#080808!important;border-color:rgba(255,255,255,.08)!important}
+
+</style>
+<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="logo.png" alt="TNL logo"><span>TNL</span></a>
+    <nav class="nav-links"><a href="index.html#work" class="">Work</a><a href="about.html" class="">About</a><a href="index.html#skills" class="">Skills</a><a href="journey.html" class="active">Journey</a><a href="contact.html" class="">Contact</a></nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="soundBtn" type="button" aria-label="Toggle sound"><i class="fa-solid fa-volume-low"></i></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme"><i class="fa-regular fa-sun"></i></button>
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language" style="width:auto;padding:0 12px;border-radius:999px">中文</button>
+      <button class="icon-btn mobile-btn" id="mobileBtn" type="button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="index.html#skills">Skills</a><a href="journey.html">Journey</a><a href="contact.html">Contact</a></div>
+</header>
+
+<main>
+<section class="hero">
+ <div class="container journey-hero-grid">
+   <div class="reveal">
+     <div class="eyebrow" data-en="Journey" data-zh="经历">Journey</div>
+     <h1 data-en="Some chapters were planned. Most made sense later." data-zh="有些章节是计划好的，更多的是后来才明白它们的意义。">Some chapters were planned. Most made sense later.</h1>
+     <p class="section-copy" data-en="University, tutoring, community, moving to China, faith, and travel never felt like separate stories to me. They all changed how I think about work and people." data-zh="大学、辅导、社群、来到中国、信仰和旅行，对我来说从来不是彼此分开的故事。它们一起改变了我对工作和人的理解。">University, tutoring, community, moving to China, faith, and travel never felt like separate stories to me. They all changed how I think about work and people.</p>
+   </div>
+   <div class="campus-card reveal">
+     <img class="hero-campus" src="bg-photo.jpeg" alt="Nanjing Tech University">
+     <div class="school-badge">
+       <img src="logo-njtech.png" alt="NJTech">
+       <div><strong>Nanjing Tech University</strong><span>Nanjing · 2022 — 2026</span></div>
+     </div>
+   </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+   <div class="section-head reveal">
+     <div class="eyebrow" data-en="Timeline" data-zh="时间线">Timeline</div>
+     <h2 data-en="A few chapters that changed how I work." data-zh="一些改变了我做事方式的阶段。">A few chapters that changed how I work.</h2>
+   </div>
+   <div class="timeline reveal">
+     <article class="timeline-item"><span class="timeline-dot"></span><div class="timeline-year">2022 — 2026</div><h3>Nanjing Tech University</h3><p data-en="Computer Science, software projects, coursework, debugging, and learning how much I still wanted to understand." data-zh="计算机科学、软件项目、课程、调试，以及越来越清楚自己还有很多想学的东西。">Computer Science, software projects, coursework, debugging, and learning how much I still wanted to understand.</p></article>
+     <article class="timeline-item"><span class="timeline-dot"></span><div class="timeline-year">2022 — 2023</div><h3>PPIT Nanjing</h3><p data-en="Community work taught me that organizing people is often harder than organizing code — and just as useful." data-zh="社群工作让我发现，协调人有时比协调代码更难，但同样重要。">Community work taught me that organizing people is often harder than organizing code — and just as useful.</p></article>
+     <article class="timeline-item"><span class="timeline-dot"></span><div class="timeline-year">2017 — 2020</div><h3 data-en="Private Tutor" data-zh="私人辅导">Private Tutor</h3><p data-en="Teaching forced me to explain things clearly. That habit still helps whenever I write, debug, or work with someone else." data-zh="教学逼着我把事情讲清楚。这个习惯到现在仍然帮助我写东西、调试和与人协作。">Teaching forced me to explain things clearly. That habit still helps whenever I write, debug, or work with someone else.</p></article>
+   </div>
+ </div>
+</section>
+
+<section class="section" id="places">
+ <div class="container">
+   <div class="places-head reveal">
+     <div>
+       <div class="eyebrow" data-en="Places" data-zh="地点">Places</div>
+       <div class="faith-note">“I can do all things through Christ who strengthens me.”<br><span>Philippians 4:13</span></div>
+     </div>
+     <div>
+       <h2 data-en="The timeline says what happened. The map reminds me where." data-zh="时间线告诉我发生了什么，地图提醒我那些事情发生在哪里。">The timeline says what happened. The map reminds me where.</h2>
+       <p data-en="Some places were home for years. Others were only a few days. I kept them together because each one left a different kind of memory." data-zh="有些地方住了很多年，有些只是短短几天。我把它们放在一起，因为每个地方都留下了不同的记忆。">Some places were home for years. Others were only a few days. I kept them together because each one left a different kind of memory.</p>
+     </div>
+   </div>
+   <div class="globe-wrap reveal"><iframe id="journeyGlobe" src="globe.html" title="Journey globe"></iframe></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container journey-cta reveal">
+   <div><div class="eyebrow" data-en="Next chapter" data-zh="下一章">Next chapter</div><h2 data-en="Still building the next version." data-zh="下一版，还在继续做。">Still building the next version.</h2></div>
+   <a class="button primary" href="contact.html"><span data-en="Send me a message" data-zh="给我留言">Send me a message</span></a>
+ </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Timothy Nathaniel Laurencio. All rights reserved.</span>
+    <a href="#top" data-en="Back to top ↑" data-zh="返回顶部 ↑">Back to top ↑</a>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+
+const THEME_KEY='portfolio-theme';
+const LANG_KEY='portfolio-language';
+const SOUND_KEY='portfolio-sound';
+
+function currentTheme(){return document.documentElement.dataset.theme||'dark'}
+function applyTheme(theme){
+  const t=theme==='light'?'light':'dark';
+  document.documentElement.dataset.theme=t;
+  document.body.classList.toggle('dark',t==='dark');
+  localStorage.setItem(THEME_KEY,t);
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta)meta.setAttribute('content',t==='dark'?'#000000':'#EDE3D3');
+  const icon=document.querySelector('#themeBtn i');
+  if(icon)icon.className=t==='dark'?'fa-regular fa-sun':'fa-regular fa-moon';
+}
+function toggleTheme(){applyTheme(currentTheme()==='dark'?'light':'dark')}
+
+let currentLanguage=localStorage.getItem(LANG_KEY)||'en';
+function applyLanguage(lang){
+  currentLanguage=lang==='zh'?'zh':'en';
+  localStorage.setItem(LANG_KEY,currentLanguage);
+  document.documentElement.lang=currentLanguage==='zh'?'zh-CN':'en';
+  document.querySelectorAll('[data-en][data-zh]').forEach(el=>{
+    el.textContent=el.dataset[currentLanguage];
+  });
+  const btn=document.getElementById('langBtn');
+  if(btn)btn.textContent=currentLanguage==='en'?'中文':'EN';
+}
+
+let soundOn=localStorage.getItem(SOUND_KEY)!=='off';
+function clickSound(freq=520){
+  if(!soundOn)return;
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.frequency.value=freq;osc.type='sine';
+    gain.gain.setValueAtTime(.025,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.07);
+    osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.08);
+  }catch(e){}
+}
+function toggleSound(){
+  soundOn=!soundOn;
+  localStorage.setItem(SOUND_KEY,soundOn?'on':'off');
+  const i=document.querySelector('#soundBtn i');
+  if(i)i.className=soundOn?'fa-solid fa-volume-low':'fa-solid fa-volume-xmark';
+}
+
+function showToast(message){
+  const t=document.getElementById('toast');
+  if(!t)return;
+  t.textContent=message;t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer=setTimeout(()=>t.classList.remove('show'),1500);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  applyTheme(localStorage.getItem(THEME_KEY)||'dark');
+  applyLanguage(currentLanguage);
+  const si=document.querySelector('#soundBtn i');
+  if(si)si.className=soundOn?'fa-solid fa-volume-low':'fa-solid fa-volume-xmark';
+
+  document.getElementById('themeBtn')?.addEventListener('click',()=>{toggleTheme();clickSound(610)});
+  document.getElementById('soundBtn')?.addEventListener('click',toggleSound);
+  document.getElementById('langBtn')?.addEventListener('click',()=>applyLanguage(currentLanguage==='en'?'zh':'en'));
+  document.getElementById('mobileBtn')?.addEventListener('click',()=>{
+    document.getElementById('mobileMenu')?.classList.toggle('open');
+  });
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+});
+
+const originalApplyTheme=applyTheme;
+applyTheme=function(theme){
+  originalApplyTheme(theme);
+  const frame=document.getElementById('journeyGlobe');
+  if(frame?.contentWindow)frame.contentWindow.postMessage({type:'tnl-theme',theme:currentTheme()},'*');
+}
+window.addEventListener('load',()=>{
+  const frame=document.getElementById('journeyGlobe');
+  frame?.addEventListener('load',()=>frame.contentWindow.postMessage({type:'tnl-theme',theme:currentTheme()},'*'));
+});
+</script>
+</body></html>

@@ -1,0 +1,139 @@
+/* Shared navigation, based on the About page reference. */
+#site-header {
+  --site-header-bg: #000;
+  --site-header-text: #f1eee8;
+  --site-header-muted: #c3bdb4;
+  --site-header-line: rgba(255,255,255,.12);
+  --site-header-accent: #a58d78;
+  position: sticky;
+  top: 0;
+  left: auto;
+  width: 100%;
+  z-index: 10000;
+  transform: none;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--site-header-line) !important;
+  border-radius: 0;
+  background: var(--site-header-bg) !important;
+  box-shadow: none !important;
+  color: var(--site-header-text);
+  font-family: "Times New Roman", Times, serif;
+}
+html[data-theme="light"] #site-header,
+html:not([data-theme="dark"]) body:not(.dark) #site-header {
+  --site-header-bg: #ede3d3;
+  --site-header-text: #241f1a;
+  --site-header-muted: #625b52;
+  --site-header-line: rgba(36,31,26,.14);
+  --site-header-accent: #927b61;
+}
+#site-header .site-header-inner {
+  width: min(1180px, calc(100% - 40px));
+  min-height: 84px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+/* Older pages store the active theme on body rather than html. */
+body.dark #site-header[data-theme-source="body"] {
+  --site-header-bg: #000;
+  --site-header-text: #f1eee8;
+  --site-header-muted: #c3bdb4;
+  --site-header-line: rgba(255,255,255,.12);
+  --site-header-accent: #a58d78;
+}
+body:not(.dark) #site-header[data-theme-source="body"] {
+  --site-header-bg: #ede3d3;
+  --site-header-text: #241f1a;
+  --site-header-muted: #625b52;
+  --site-header-line: rgba(36,31,26,.14);
+  --site-header-accent: #927b61;
+}
+#site-header .brand { justify-self: start; transform: none; }
+#site-header .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  order: 0;
+  overflow: visible;
+}
+#site-header .nav-links a {
+  position: relative;
+  color: var(--site-header-muted) !important;
+  font: 400 .92rem/1.5 "Times New Roman", Times, serif;
+  letter-spacing: normal;
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: 1 !important;
+}
+#site-header .nav-links a.active,
+#site-header .nav-links a:hover { color: var(--site-header-text) !important; }
+#site-header .nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 1px;
+  border-radius: 0;
+  background: var(--site-header-accent);
+  transition: width .18s ease;
+}
+#site-header .nav-links a.active::after,
+#site-header .nav-links a:hover::after { width: 100%; }
+#site-header .site-header-tools {
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  gap: 8px;
+}
+#site-header .site-header-tools button {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--site-header-line) !important;
+  border-radius: 50%;
+  background: transparent !important;
+  color: var(--site-header-text) !important;
+  font: 400 1rem/1 "Times New Roman", Times, serif;
+  cursor: pointer;
+  box-shadow: none;
+  transform: none;
+}
+#site-header .site-header-tools button:hover { border-color: var(--site-header-accent); }
+#site-header .site-header-tools .site-language {
+  width: auto;
+  min-width: 56px;
+  padding: 0 12px;
+  border-radius: 999px;
+}
+#site-header a:focus-visible,
+#site-header button:focus-visible { outline: 2px solid var(--site-header-accent); outline-offset: 5px; }
+#site-header #site-menu-toggle { display: none; }
+body:has(> #site-header) > main { padding-top: 0; }
+@media (max-width: 850px) {
+  #site-header .site-header-inner { grid-template-columns: 1fr auto; gap: 12px; }
+  #site-header #site-menu-toggle { display: inline-grid; }
+  #site-header .nav-links { display: none; grid-column: 1 / -1; grid-row: 2; }
+  #site-header.menu-open .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 14px 0 22px;
+    border-top: 1px solid var(--site-header-line);
+  }
+}
+@media (max-width: 680px) {
+  #site-header .site-header-inner { width: calc(100% - 24px); min-height: 78px; }
+}

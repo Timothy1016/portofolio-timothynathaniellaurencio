@@ -1,0 +1,33 @@
+/* Shared header logo: keep the same shape and sizing on every page. */
+header .brand {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  background: #000;
+  text-decoration: none;
+  box-shadow: none;
+}
+header .brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 50%;
+  object-fit: contain;
+  mix-blend-mode: normal;
+}
+header .brand:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+header .nav { min-height: 84px; }
+@media (max-width: 680px) {
+  header .brand { width: 58px; height: 58px; flex-basis: 58px; }
+  header .nav { min-height: 78px; }
+}
